@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "NwRQxqg7A1ykmZlM0AEy8f6NfQ8y6P1YIukmdMJIrCI=",
+  "Source": "User.Service.Presentation",
+  "BasePath": "_content/User.Service.Presentation",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
