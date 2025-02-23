@@ -1,6 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "User.Service", "User.Service", "{B943177F-6137-4A3E-BE73-F6D683862191}"
+	ProjectSection(SolutionItems) = preProject
+		User.Service\.gitignore = User.Service\.gitignore
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Stream.Service", "Stream.Service", "{CD9834A3-47B8-4199-884D-A5C13DB8EBCE}"
 EndProject
