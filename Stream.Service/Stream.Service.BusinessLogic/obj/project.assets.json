@@ -1,11 +1,49 @@
 {
   "version": 3,
   "targets": {
-    "net6.0": {}
+    "net6.0": {
+      "Stream.Service.DataAccess/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Stream.Service.Shared": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Stream.Service.DataAccess.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Stream.Service.DataAccess.dll": {}
+        }
+      },
+      "Stream.Service.Shared/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/Stream.Service.Shared.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Stream.Service.Shared.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "Stream.Service.DataAccess/1.0.0": {
+      "type": "project",
+      "path": "../Stream.Service.DataAccess/Stream.Service.DataAccess.csproj",
+      "msbuildProject": "../Stream.Service.DataAccess/Stream.Service.DataAccess.csproj"
+    },
+    "Stream.Service.Shared/1.0.0": {
+      "type": "project",
+      "path": "../Stream.Service.Shared/Stream.Service.Shared.csproj",
+      "msbuildProject": "../Stream.Service.Shared/Stream.Service.Shared.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net6.0": []
+    "net6.0": [
+      "Stream.Service.DataAccess >= 1.0.0",
+      "Stream.Service.Shared >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\Andrew\\.nuget\\packages\\": {},
@@ -38,7 +76,14 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\Projects\\StreamingPlatform\\Stream.Service\\Stream.Service.DataAccess\\Stream.Service.DataAccess.csproj": {
+              "projectPath": "D:\\Projects\\StreamingPlatform\\Stream.Service\\Stream.Service.DataAccess\\Stream.Service.DataAccess.csproj"
+            },
+            "D:\\Projects\\StreamingPlatform\\Stream.Service\\Stream.Service.Shared\\Stream.Service.Shared.csproj": {
+              "projectPath": "D:\\Projects\\StreamingPlatform\\Stream.Service\\Stream.Service.Shared\\Stream.Service.Shared.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
