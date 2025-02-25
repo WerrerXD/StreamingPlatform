@@ -20,21 +20,47 @@
     <list default="true" id="bd92da78-c465-44ec-9295-733f53281e31" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.StreamingPlatform/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.StreamingPlatform/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Notification.Service/Notification.Service.Application/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/Notification.Service/Notification.Service.Application/obj/rider.project.model.nuget.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Notification.Service/Notification.Service.Application/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/Notification.Service/Notification.Service.Application/obj/rider.project.restore.info" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Notification.Service/Notification.Service.Domain/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/Notification.Service/Notification.Service.Domain/obj/rider.project.model.nuget.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Notification.Service/Notification.Service.Domain/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/Notification.Service/Notification.Service.Domain/obj/rider.project.restore.info" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Notification.Service/Notification.Service.Infrastructure/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/Notification.Service/Notification.Service.Infrastructure/obj/rider.project.model.nuget.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Notification.Service/Notification.Service.Infrastructure/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/Notification.Service/Notification.Service.Infrastructure/obj/rider.project.restore.info" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Notification.Service/Notification.Service.Presentation/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/Notification.Service/Notification.Service.Presentation/obj/rider.project.model.nuget.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Notification.Service/Notification.Service.Presentation/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/Notification.Service/Notification.Service.Presentation/obj/rider.project.restore.info" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Notification.Service/Notification.Service.Shared/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/Notification.Service/Notification.Service.Shared/obj/rider.project.model.nuget.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stream.Service/Stream.Service.BusinessLogic/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/Stream.Service/Stream.Service.BusinessLogic/obj/rider.project.model.nuget.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stream.Service/Stream.Service.DataAccess/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/Stream.Service/Stream.Service.DataAccess/obj/rider.project.model.nuget.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stream.Service/Stream.Service.Presentation/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/Stream.Service/Stream.Service.Presentation/obj/rider.project.model.nuget.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stream.Service/Stream.Service.Shared/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/Stream.Service/Stream.Service.Shared/obj/rider.project.model.nuget.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Notification.Service/Notification.Service.Shared/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/Notification.Service/Notification.Service.Shared/obj/rider.project.restore.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Stream.Service/Stream.Service.BusinessLogic/Stream.Service.BusinessLogic.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Stream.Service/Stream.Service.BusinessLogic/Stream.Service.BusinessLogic.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Stream.Service/Stream.Service.BusinessLogic/obj/Debug/net6.0/Stream.Service.BusinessLogic.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Stream.Service/Stream.Service.BusinessLogic/obj/Debug/net6.0/Stream.Service.BusinessLogic.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Stream.Service/Stream.Service.BusinessLogic/obj/Stream.Service.BusinessLogic.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/Stream.Service/Stream.Service.BusinessLogic/obj/Stream.Service.BusinessLogic.csproj.nuget.dgspec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Stream.Service/Stream.Service.BusinessLogic/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/Stream.Service/Stream.Service.BusinessLogic/obj/project.assets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Stream.Service/Stream.Service.BusinessLogic/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Stream.Service/Stream.Service.BusinessLogic/obj/project.nuget.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Stream.Service/Stream.Service.BusinessLogic/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/Stream.Service/Stream.Service.BusinessLogic/obj/project.packagespec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Stream.Service/Stream.Service.BusinessLogic/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/Stream.Service/Stream.Service.BusinessLogic/obj/rider.project.restore.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Stream.Service/Stream.Service.DataAccess/Stream.Service.DataAccess.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Stream.Service/Stream.Service.DataAccess/Stream.Service.DataAccess.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Stream.Service/Stream.Service.DataAccess/obj/Debug/net6.0/Stream.Service.DataAccess.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Stream.Service/Stream.Service.DataAccess/obj/Debug/net6.0/Stream.Service.DataAccess.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Stream.Service/Stream.Service.DataAccess/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/Stream.Service/Stream.Service.DataAccess/obj/project.packagespec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Stream.Service/Stream.Service.DataAccess/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/Stream.Service/Stream.Service.DataAccess/obj/rider.project.restore.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Stream.Service/Stream.Service.Presentation/Stream.Service.Presentation.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Stream.Service/Stream.Service.Presentation/Stream.Service.Presentation.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Stream.Service/Stream.Service.Presentation/obj/Debug/net6.0/Stream.Service.Presentation.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Stream.Service/Stream.Service.Presentation/obj/Debug/net6.0/Stream.Service.Presentation.assets.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Stream.Service/Stream.Service.Presentation/obj/Debug/net6.0/Stream.Service.Presentation.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Stream.Service/Stream.Service.Presentation/obj/Debug/net6.0/Stream.Service.Presentation.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Stream.Service/Stream.Service.Presentation/obj/Stream.Service.Presentation.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/Stream.Service/Stream.Service.Presentation/obj/Stream.Service.Presentation.csproj.nuget.dgspec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Stream.Service/Stream.Service.Presentation/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/Stream.Service/Stream.Service.Presentation/obj/project.assets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Stream.Service/Stream.Service.Presentation/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Stream.Service/Stream.Service.Presentation/obj/project.nuget.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Stream.Service/Stream.Service.Presentation/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/Stream.Service/Stream.Service.Presentation/obj/project.packagespec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Stream.Service/Stream.Service.Presentation/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/Stream.Service/Stream.Service.Presentation/obj/rider.project.restore.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Stream.Service/Stream.Service.Shared/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/Stream.Service/Stream.Service.Shared/obj/rider.project.restore.info" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/User.Service/User.Service.Application/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/User.Service/User.Service.Application/obj/rider.project.model.nuget.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/User.Service/User.Service.Application/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/User.Service/User.Service.Application/obj/rider.project.restore.info" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/User.Service/User.Service.Domain/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/User.Service/User.Service.Domain/obj/rider.project.model.nuget.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/User.Service/User.Service.Domain/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/User.Service/User.Service.Domain/obj/rider.project.restore.info" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/User.Service/User.Service.Infrastructure/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/User.Service/User.Service.Infrastructure/obj/rider.project.model.nuget.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/User.Service/User.Service.Infrastructure/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/User.Service/User.Service.Infrastructure/obj/rider.project.restore.info" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/User.Service/User.Service.Presentation/obj/Debug/net6.0/User.Service.Presentation.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/User.Service/User.Service.Presentation/obj/Debug/net6.0/User.Service.Presentation.csproj.AssemblyReference.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/User.Service/User.Service.Presentation/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/User.Service/User.Service.Presentation/obj/rider.project.model.nuget.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/User.Service/User.Service.Presentation/obj/staticwebassets.pack.sentinel" beforeDir="false" afterPath="$PROJECT_DIR$/User.Service/User.Service.Presentation/obj/staticwebassets.pack.sentinel" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/User.Service/User.Service.Presentation/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/User.Service/User.Service.Presentation/obj/rider.project.restore.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/User.Service/User.Service.Shared/Class1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/User.Service/User.Service.Shared/Class1.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/User.Service/User.Service.Shared/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/User.Service/User.Service.Shared/obj/rider.project.model.nuget.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/User.Service/User.Service.Shared/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/User.Service/User.Service.Shared/obj/rider.project.restore.info" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,6 +68,11 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="feature/user-service" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -80,7 +111,7 @@
   &quot;keyToString&quot;: {
     &quot;.NET Launch Settings Profile.User.Service.Presentation.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;dev&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature/stream-service&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -229,6 +260,27 @@
         <option name="Build" />
       </method>
     </configuration>
+    <configuration name="Stream.Service.Presentation/Dockerfile" type="docker-deploy" factoryName="dockerfile" server-name="Docker">
+      <deployment type="dockerfile">
+        <settings>
+          <option name="imageTag" value="stream.service.presentation" />
+          <option name="containerName" value="stream.service.presentation" />
+          <option name="contextFolderPath" value="D:\Projects\StreamingPlatform" />
+          <option name="portBindings">
+            <list>
+              <DockerPortBindingImpl>
+                <option name="containerPort" value="80" />
+                <option name="hostIp" value="127.0.0.1" />
+                <option name="hostPort" value="8080" />
+              </DockerPortBindingImpl>
+            </list>
+          </option>
+          <option name="sourceFilePath" value="Stream.Service/Stream.Service.Presentation/Dockerfile" />
+        </settings>
+      </deployment>
+      <EXTENSION ID="com.jetbrains.rider.docker.debug" isFastModeEnabled="true" isSslEnabled="false" />
+      <method v="2" />
+    </configuration>
     <configuration name="User.Service.Presentation/Dockerfile" type="docker-deploy" factoryName="dockerfile" server-name="Docker">
       <deployment type="dockerfile">
         <settings>
@@ -251,7 +303,10 @@
       <method v="2" />
     </configuration>
     <configuration default="true" type="docker-deploy" factoryName="dockerfile" temporary="true">
-      <deployment type="dockerfile" />
+      <deployment type="dockerfile">
+        <settings />
+      </deployment>
+      <EXTENSION ID="com.jetbrains.rider.docker.debug" isFastModeEnabled="true" isSslEnabled="false" />
       <method v="2" />
     </configuration>
   </component>
