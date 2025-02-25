@@ -1,11 +1,30 @@
 {
   "version": 3,
   "targets": {
-    "net6.0": {}
+    "net6.0": {
+      "Notification.Service.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/Notification.Service.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Notification.Service.Domain.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "Notification.Service.Domain/1.0.0": {
+      "type": "project",
+      "path": "../Notification.Service.Domain/Notification.Service.Domain.csproj",
+      "msbuildProject": "../Notification.Service.Domain/Notification.Service.Domain.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net6.0": []
+    "net6.0": [
+      "Notification.Service.Domain >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\Andrew\\.nuget\\packages\\": {},
@@ -38,7 +57,11 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\Projects\\StreamingPlatform\\Notification.Service\\Notification.Service.Domain\\Notification.Service.Domain.csproj": {
+              "projectPath": "D:\\Projects\\StreamingPlatform\\Notification.Service\\Notification.Service.Domain\\Notification.Service.Domain.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

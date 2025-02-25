@@ -88,6 +88,54 @@
         "frameworkReferences": [
           "Microsoft.AspNetCore.App"
         ]
+      },
+      "Notification.Service.Application/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Notification.Service.Domain": "1.0.0",
+          "Notification.Service.Infrastructure": "1.0.0",
+          "Notification.Service.Shared": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Notification.Service.Application.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Notification.Service.Application.dll": {}
+        }
+      },
+      "Notification.Service.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/Notification.Service.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Notification.Service.Domain.dll": {}
+        }
+      },
+      "Notification.Service.Infrastructure/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Notification.Service.Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Notification.Service.Infrastructure.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Notification.Service.Infrastructure.dll": {}
+        }
+      },
+      "Notification.Service.Shared/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/Notification.Service.Shared.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Notification.Service.Shared.dll": {}
+        }
       }
     }
   },
@@ -429,10 +477,32 @@
         "swashbuckle.aspnetcore.swaggerui.6.5.0.nupkg.sha512",
         "swashbuckle.aspnetcore.swaggerui.nuspec"
       ]
+    },
+    "Notification.Service.Application/1.0.0": {
+      "type": "project",
+      "path": "../Notification.Service.Application/Notification.Service.Application.csproj",
+      "msbuildProject": "../Notification.Service.Application/Notification.Service.Application.csproj"
+    },
+    "Notification.Service.Domain/1.0.0": {
+      "type": "project",
+      "path": "../Notification.Service.Domain/Notification.Service.Domain.csproj",
+      "msbuildProject": "../Notification.Service.Domain/Notification.Service.Domain.csproj"
+    },
+    "Notification.Service.Infrastructure/1.0.0": {
+      "type": "project",
+      "path": "../Notification.Service.Infrastructure/Notification.Service.Infrastructure.csproj",
+      "msbuildProject": "../Notification.Service.Infrastructure/Notification.Service.Infrastructure.csproj"
+    },
+    "Notification.Service.Shared/1.0.0": {
+      "type": "project",
+      "path": "../Notification.Service.Shared/Notification.Service.Shared.csproj",
+      "msbuildProject": "../Notification.Service.Shared/Notification.Service.Shared.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+      "Notification.Service.Application >= 1.0.0",
+      "Notification.Service.Shared >= 1.0.0",
       "Swashbuckle.AspNetCore >= 6.5.0"
     ]
   },
@@ -467,7 +537,14 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\Projects\\StreamingPlatform\\Notification.Service\\Notification.Service.Application\\Notification.Service.Application.csproj": {
+              "projectPath": "D:\\Projects\\StreamingPlatform\\Notification.Service\\Notification.Service.Application\\Notification.Service.Application.csproj"
+            },
+            "D:\\Projects\\StreamingPlatform\\Notification.Service\\Notification.Service.Shared\\Notification.Service.Shared.csproj": {
+              "projectPath": "D:\\Projects\\StreamingPlatform\\Notification.Service\\Notification.Service.Shared\\Notification.Service.Shared.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
