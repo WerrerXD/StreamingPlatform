@@ -18,7 +18,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bd92da78-c465-44ec-9295-733f53281e31" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.StreamingPlatform/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.StreamingPlatform/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Notification.Service/Notification.Service.Application/obj/rider.project.model.nuget.info" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Notification.Service/Notification.Service.Infrastructure/obj/rider.project.model.nuget.info" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Notification.Service/Notification.Service.Presentation/obj/rider.project.model.nuget.info" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Notification.Service/Notification.Service.Shared/obj/rider.project.model.nuget.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Notification.Service/Notification.Service.Domain/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/Notification.Service/Notification.Service.Domain/obj/rider.project.model.nuget.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Stream.Service/Stream.Service.BusinessLogic/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/Stream.Service/Stream.Service.BusinessLogic/obj/rider.project.model.nuget.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Stream.Service/Stream.Service.DataAccess/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/Stream.Service/Stream.Service.DataAccess/obj/rider.project.model.nuget.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Stream.Service/Stream.Service.Presentation/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/Stream.Service/Stream.Service.Presentation/obj/rider.project.model.nuget.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Stream.Service/Stream.Service.Shared/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/Stream.Service/Stream.Service.Shared/obj/rider.project.model.nuget.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/User.Service/User.Service.Presentation/obj/Debug/net6.0/User.Service.Presentation.csproj.AssemblyReference.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/User.Service/User.Service.Presentation/obj/rider.project.model.nuget.info" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +37,26 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "WerrerXD"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/WerrerXD/StreamingPlatform.git",
+    "accountId": "36bff2c9-4ffe-4042-a7e1-92923dfd3b76"
+  }
+}]]></component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/User.Service/User.Service.Presentation/Controllers/WeatherForecastController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/User.Service/User.Service.Presentation/Program.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/User.Service/User.Service.Presentation/appsettings.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/User.Service/User.Service.Shared/Class1.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://D:/Projects/StreamingPlatform/User.Service/User.Service/obj/Debug/net6.0/.NETCoreApp,Version=v6.0.AssemblyAttributes.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Projects/StreamingPlatform/User.Service/User.Service/obj/Debug/net6.0/.NETCoreApp,Version=v6.0.AssemblyAttributes.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="false" />
   <component name="ProblemsViewState">
@@ -44,7 +74,7 @@
   "keyToString": {
     ".NET Launch Settings Profile.User.Service.Presentation.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "feature/notification-service",
+    "git-widget-placeholder": "Rebasing dev",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -204,6 +234,23 @@
       <updated>1740258446717</updated>
       <workItem from="1740258448057" duration="2209000" />
     </task>
+    <task id="LOCAL-00001" summary="--">
+      <option name="closed" value="true" />
+      <created>1740474706115</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1740474706115</updated>
+    </task>
+    <task id="LOCAL-00002" summary="--">
+      <option name="closed" value="true" />
+      <created>1740477241314</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1740477241314</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -211,7 +258,20 @@
   </component>
   <component name="UnityCheckinConfiguration" checkUnsavedScenes="false" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="--" />
+    <option name="LAST_COMMIT_MESSAGE" value="--" />
   </component>
 </project>
