@@ -17,17 +17,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bd92da78-c465-44ec-9295-733f53281e31" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Stream.Service/Stream.Service.BusinessLogic/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/Stream.Service/Stream.Service.BusinessLogic/obj/rider.project.model.nuget.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stream.Service/Stream.Service.DataAccess/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/Stream.Service/Stream.Service.DataAccess/obj/rider.project.model.nuget.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stream.Service/Stream.Service.Presentation/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/Stream.Service/Stream.Service.Presentation/obj/rider.project.model.nuget.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/User.Service/User.Service.Application/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/User.Service/User.Service.Application/obj/rider.project.model.nuget.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/User.Service/User.Service.Domain/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/User.Service/User.Service.Domain/obj/rider.project.model.nuget.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/User.Service/User.Service.Infrastructure/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/User.Service/User.Service.Infrastructure/obj/rider.project.model.nuget.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/User.Service/User.Service.Presentation/obj/Debug/net6.0/User.Service.Presentation.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/User.Service/User.Service.Presentation/obj/Debug/net6.0/User.Service.Presentation.csproj.AssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/User.Service/User.Service.Presentation/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/User.Service/User.Service.Presentation/obj/rider.project.model.nuget.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/User.Service/User.Service.Shared/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/User.Service/User.Service.Shared/obj/rider.project.model.nuget.info" afterDir="false" />
-    </list>
+    <list default="true" id="bd92da78-c465-44ec-9295-733f53281e31" name="Changes" comment="Adding cache files" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -53,8 +43,6 @@
     <setting file="file://$PROJECT_DIR$/User.Service/User.Service.Presentation/Program.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/User.Service/User.Service.Presentation/appsettings.json" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/User.Service/User.Service.Shared/Class1.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://D:/Projects/StreamingPlatform/User.Service/User.Service/obj/Debug/net6.0/.NETCoreApp,Version=v6.0.AssemblyAttributes.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Projects/StreamingPlatform/User.Service/User.Service/obj/Debug/net6.0/.NETCoreApp,Version=v6.0.AssemblyAttributes.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="false" />
   <component name="ProblemsViewState">
@@ -72,7 +60,7 @@
   &quot;keyToString&quot;: {
     &quot;.NET Launch Settings Profile.User.Service.Presentation.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;feature/notification-service&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature/user-service&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -278,7 +266,31 @@
       <option name="project" value="LOCAL" />
       <updated>1740477241314</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="new ver">
+      <option name="closed" value="true" />
+      <created>1740503320810</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1740503320810</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Adding dockerfile and references">
+      <option name="closed" value="true" />
+      <created>1740503889273</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1740503889273</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Adding cache files">
+      <option name="closed" value="true" />
+      <created>1740504000569</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1740504000569</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -300,6 +312,9 @@
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="--" />
-    <option name="LAST_COMMIT_MESSAGE" value="--" />
+    <MESSAGE value="new ver" />
+    <MESSAGE value="Adding dockerfile and references" />
+    <MESSAGE value="Adding cache files" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding cache files" />
   </component>
 </project>
