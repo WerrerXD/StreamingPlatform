@@ -13,6 +13,13 @@
 
     <ItemGroup>
       <ProjectReference Include="..\User.Service.Application\User.Service.Application.csproj" />
+      <ProjectReference Include="..\User.Service.Shared\User.Service.Shared.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Include="..\..\.dockerignore">
+        <Link>.dockerignore</Link>
+      </Content>
     </ItemGroup>
 
 </Project>
