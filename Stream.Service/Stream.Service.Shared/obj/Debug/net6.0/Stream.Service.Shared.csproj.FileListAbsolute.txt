@@ -1,0 +1,12 @@
+D:\Projects\StreamingPlatform\Stream.Service.Shared\bin\Debug\net6.0\Stream.Service.Shared.deps.json
+D:\Projects\StreamingPlatform\Stream.Service.Shared\bin\Debug\net6.0\Stream.Service.Shared.dll
+D:\Projects\StreamingPlatform\Stream.Service.Shared\bin\Debug\net6.0\Stream.Service.Shared.pdb
+D:\Projects\StreamingPlatform\Stream.Service.Shared\obj\Debug\net6.0\Stream.Service.Shared.csproj.AssemblyReference.cache
+D:\Projects\StreamingPlatform\Stream.Service.Shared\obj\Debug\net6.0\Stream.Service.Shared.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\StreamingPlatform\Stream.Service.Shared\obj\Debug\net6.0\Stream.Service.Shared.AssemblyInfoInputs.cache
+D:\Projects\StreamingPlatform\Stream.Service.Shared\obj\Debug\net6.0\Stream.Service.Shared.AssemblyInfo.cs
+D:\Projects\StreamingPlatform\Stream.Service.Shared\obj\Debug\net6.0\Stream.Service.Shared.csproj.CoreCompileInputs.cache
+D:\Projects\StreamingPlatform\Stream.Service.Shared\obj\Debug\net6.0\Stream.Service.Shared.dll
+D:\Projects\StreamingPlatform\Stream.Service.Shared\obj\Debug\net6.0\refint\Stream.Service.Shared.dll
+D:\Projects\StreamingPlatform\Stream.Service.Shared\obj\Debug\net6.0\Stream.Service.Shared.pdb
+D:\Projects\StreamingPlatform\Stream.Service.Shared\obj\Debug\net6.0\ref\Stream.Service.Shared.dll

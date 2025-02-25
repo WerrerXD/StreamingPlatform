@@ -1,0 +1,12 @@
+D:\Projects\StreamingPlatform\Stream.Service.DataAccess\bin\Debug\net6.0\Stream.Service.DataAccess.deps.json
+D:\Projects\StreamingPlatform\Stream.Service.DataAccess\bin\Debug\net6.0\Stream.Service.DataAccess.dll
+D:\Projects\StreamingPlatform\Stream.Service.DataAccess\bin\Debug\net6.0\Stream.Service.DataAccess.pdb
+D:\Projects\StreamingPlatform\Stream.Service.DataAccess\obj\Debug\net6.0\Stream.Service.DataAccess.csproj.AssemblyReference.cache
+D:\Projects\StreamingPlatform\Stream.Service.DataAccess\obj\Debug\net6.0\Stream.Service.DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\StreamingPlatform\Stream.Service.DataAccess\obj\Debug\net6.0\Stream.Service.DataAccess.AssemblyInfoInputs.cache
+D:\Projects\StreamingPlatform\Stream.Service.DataAccess\obj\Debug\net6.0\Stream.Service.DataAccess.AssemblyInfo.cs
+D:\Projects\StreamingPlatform\Stream.Service.DataAccess\obj\Debug\net6.0\Stream.Service.DataAccess.csproj.CoreCompileInputs.cache
+D:\Projects\StreamingPlatform\Stream.Service.DataAccess\obj\Debug\net6.0\Stream.Service.DataAccess.dll
+D:\Projects\StreamingPlatform\Stream.Service.DataAccess\obj\Debug\net6.0\refint\Stream.Service.DataAccess.dll
+D:\Projects\StreamingPlatform\Stream.Service.DataAccess\obj\Debug\net6.0\Stream.Service.DataAccess.pdb
+D:\Projects\StreamingPlatform\Stream.Service.DataAccess\obj\Debug\net6.0\ref\Stream.Service.DataAccess.dll
