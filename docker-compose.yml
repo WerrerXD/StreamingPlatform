@@ -1,0 +1,85 @@
+﻿version: '3.8'
+
+services:
+  # Микросервис User.Service
+  user-service:
+    build: 
+      context: ./User.Service
+      dockerfile: User.Service.Presentation/Dockerfile
+    ports:
+      - "5001:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Server=db;Database=UserDb;User Id=sa;Password=YourPassword123;
+    depends_on:
+      - db
+
+  # Микросервис Stream.Service
+  stream-service:
+    build:
+      context: ./Stream.Service
+      dockerfile: Stream.Service.Presentation/Dockerfile
+    ports:
+      - "5002:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - MongoDbSettings__ConnectionString=mongodb://mongo:27017
+      - MongoDbSettings__DatabaseName=StreamDb
+    depends_on:
+      - mongo
+      - rabbitmq
+      - redis
+
+  # Микросервис Notification.Service
+  notification-service:
+    build:
+      context: ./Notification.Service
+      dockerfile: Notification.Service.Presentation/Dockerfile
+    ports:
+      - "5003:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - RedisSettings__ConnectionString=redis://redis:6379
+    depends_on:
+      - rabbitmq
+      - redis
+
+  # PostgreSQL для User.Service
+  db:
+    image: postgres:14
+    environment:
+      POSTGRES_USER: sa
+      POSTGRES_PASSWORD: U
+      POSTGRES_DB: UserDb
+    ports:
+      - "5432:5432"
+
+  # MongoDB для Stream.Service
+  mongo:
+    image: mongo:6.0
+    ports:
+      - "27017:27017"
+
+  # RabbitMQ для обмена сообщениями
+  rabbitmq:
+    image: rabbitmq:management
+    ports:
+      - "5672:5672"  
+      - "15672:15672"  
+
+  # Redis для кэширования данных
+  redis:
+    image: redis:7.0
+    ports:
+      - "6379:6379"
+  notification.service.presentation:
+    image: notification.service.presentation
+    build:
+      context: .
+      dockerfile: Notification.Service/Notification.Service.Presentation/Dockerfile
+
+  notification.service.presentation-1:
+    image: notification.service.presentation-1
+    build:
+      context: .
+      dockerfile: Notification.Service/Notification.Service.Presentation/Dockerfile
