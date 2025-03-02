@@ -7,14 +7,27 @@
   "targets": {
     ".NETCoreApp,Version=v6.0": {
       "Stream.Service.DataAccess/1.0.0": {
+        "dependencies": {
+          "Stream.Service.Shared": "1.0.0"
+        },
         "runtime": {
           "Stream.Service.DataAccess.dll": {}
+        }
+      },
+      "Stream.Service.Shared/1.0.0": {
+        "runtime": {
+          "Stream.Service.Shared.dll": {}
         }
       }
     }
   },
   "libraries": {
     "Stream.Service.DataAccess/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Stream.Service.Shared/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

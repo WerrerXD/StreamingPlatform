@@ -6,4 +6,8 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Stream.Service.Shared\Stream.Service.Shared.csproj" />
+    </ItemGroup>
+
 </Project>
