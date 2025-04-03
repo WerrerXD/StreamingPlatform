@@ -17,5 +17,7 @@ public class FollowConfiguration: IEntityTypeConfiguration<Follow>
             .WithMany()
             .HasForeignKey(f => f.FollowingId)
             .OnDelete(DeleteBehavior.Restrict);
+        builder.Property(r => r.FollowingSince)
+            .HasDefaultValueSql("CURRENT_TIMESTAMP");
     }
 }

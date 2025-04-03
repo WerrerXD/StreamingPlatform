@@ -20,5 +20,7 @@ public class ReportConfiguration: IEntityTypeConfiguration<Report>
         builder.Property(r => r.Status)
             .IsRequired()
             .HasMaxLength(20);
+        builder.Property(r => r.CreatedAt)
+            .HasDefaultValueSql("CURRENT_TIMESTAMP");
     }
 }

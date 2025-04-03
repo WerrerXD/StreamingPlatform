@@ -69,7 +69,10 @@
           "Stream.Service.Shared": "1.0.0"
         },
         "runtime": {
-          "Stream.Service.BusinessLogic.dll": {}
+          "Stream.Service.BusinessLogic.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "Stream.Service.DataAccess/1.0.0": {
@@ -77,12 +80,18 @@
           "Stream.Service.Shared": "1.0.0"
         },
         "runtime": {
-          "Stream.Service.DataAccess.dll": {}
+          "Stream.Service.DataAccess.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "Stream.Service.Shared/1.0.0": {
         "runtime": {
-          "Stream.Service.Shared.dll": {}
+          "Stream.Service.Shared.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       }
     }

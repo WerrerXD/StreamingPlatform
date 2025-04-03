@@ -12,11 +12,13 @@ public class UserConfiguration: IEntityTypeConfiguration<AppUser>
             builder.Property(u => u.UserName).IsRequired().HasMaxLength(100);
             builder.Property(u => u.Email).IsRequired().HasMaxLength(256);
             builder.HasIndex(u => u.Email).IsUnique();
+            builder.HasMany(u => u.RefreshTokens)
+                .WithOne(rt => rt.User)
+                .HasForeignKey(rt => rt.UserId)
+                .OnDelete(DeleteBehavior.Cascade);
             builder.HasMany(u => u.Roles)
                    .WithMany(r => r.Users);
-            builder.HasOne(u => u.Profile)
-                .WithOne(p => p.User)
-                .HasForeignKey<Profile>(p => p.UserId)
-                .OnDelete(DeleteBehavior.Cascade);
+            builder.Property(r => r.CreatedAt)
+                .HasDefaultValueSql("CURRENT_TIMESTAMP");
     }
 }

@@ -52,9 +52,15 @@ D:\Projects\StreamingPlatform\Stream.Service\Stream.Service.Presentation\obj\Deb
 D:\Projects\StreamingPlatform\Stream.Service\Stream.Service.Presentation\obj\Debug\net6.0\staticwebassets.build.json
 D:\Projects\StreamingPlatform\Stream.Service\Stream.Service.Presentation\obj\Debug\net6.0\staticwebassets.development.json
 D:\Projects\StreamingPlatform\Stream.Service\Stream.Service.Presentation\obj\Debug\net6.0\scopedcss\bundle\Stream.Service.Presentation.styles.css
-D:\Projects\StreamingPlatform\Stream.Service\Stream.Service.Presentation\obj\Debug\net6.0\Stream.Service.Presentation.csproj.CopyComplete
 D:\Projects\StreamingPlatform\Stream.Service\Stream.Service.Presentation\obj\Debug\net6.0\Stream.Service.Presentation.dll
 D:\Projects\StreamingPlatform\Stream.Service\Stream.Service.Presentation\obj\Debug\net6.0\refint\Stream.Service.Presentation.dll
 D:\Projects\StreamingPlatform\Stream.Service\Stream.Service.Presentation\obj\Debug\net6.0\Stream.Service.Presentation.pdb
 D:\Projects\StreamingPlatform\Stream.Service\Stream.Service.Presentation\obj\Debug\net6.0\Stream.Service.Presentation.genruntimeconfig.cache
 D:\Projects\StreamingPlatform\Stream.Service\Stream.Service.Presentation\obj\Debug\net6.0\ref\Stream.Service.Presentation.dll
+D:\Projects\StreamingPlatform\Stream.Service\Stream.Service.Presentation\obj\Debug\net6.0\Stream.Service.Presentation.sourcelink.json
+D:\Projects\StreamingPlatform\Stream.Service\Stream.Service.Presentation\obj\Debug\net6.0\staticwebassets\msbuild.Stream.Service.Presentation.Microsoft.AspNetCore.StaticWebAssets.props
+D:\Projects\StreamingPlatform\Stream.Service\Stream.Service.Presentation\obj\Debug\net6.0\staticwebassets\msbuild.build.Stream.Service.Presentation.props
+D:\Projects\StreamingPlatform\Stream.Service\Stream.Service.Presentation\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.Stream.Service.Presentation.props
+D:\Projects\StreamingPlatform\Stream.Service\Stream.Service.Presentation\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.Stream.Service.Presentation.props
+D:\Projects\StreamingPlatform\Stream.Service\Stream.Service.Presentation\obj\Debug\net6.0\staticwebassets.pack.json
+D:\Projects\StreamingPlatform\Stream.Service\Stream.Service.Presentation\obj\Debug\net6.0\Stream.S.D85F038B.Up2Date
