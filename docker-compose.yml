@@ -3,16 +3,19 @@
 services:
   # Микросервис User.Service
   user-service:
-    build: 
+    build:
       context: ./User.Service
       dockerfile: User.Service.Presentation/Dockerfile
     ports:
       - "5001:80"
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ConnectionStrings__DefaultConnection=Server=db;Database=UserDb;User Id=sa;Password=YourPassword123;
+      - ConnectionStrings__DefaultConnection=host=db;Port=5432;Database=userdb;User ID=postgres;Password=root;
     depends_on:
-      - db
+      - pgadmin
+      - redis
+      - logstash
+      - kibana
 
   # Микросервис Stream.Service
   stream-service:
@@ -23,10 +26,10 @@ services:
       - "5002:80"
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - MongoDbSettings__ConnectionString=mongodb://mongo:27017
+      - MongoDbSettings__ConnectionString=mongodb://mongodb:27017
       - MongoDbSettings__DatabaseName=StreamDb
     depends_on:
-      - mongo
+      - mongodb
       - rabbitmq
       - redis
 
@@ -44,42 +47,84 @@ services:
       - rabbitmq
       - redis
 
-  # PostgreSQL для User.Service
   db:
     image: postgres:14
+    container_name: db
     environment:
-      POSTGRES_USER: sa
-      POSTGRES_PASSWORD: U
-      POSTGRES_DB: UserDb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: userdb
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
+  
+  
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "15432:80"
+    volumes:
+      - ./pgadmin-data:/var/lib/pgadmin
+    depends_on:
+      - db
 
-  # MongoDB для Stream.Service
-  mongo:
+  mongodb:
     image: mongo:6.0
+    container_name: mongodb
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
     ports:
       - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
 
-  # RabbitMQ для обмена сообщениями
   rabbitmq:
     image: rabbitmq:management
     ports:
-      - "5672:5672"  
-      - "15672:15672"  
-
-  # Redis для кэширования данных
+      - "5672:5672"
+      - "15672:15672"
+  
   redis:
     image: redis:7.0
     ports:
       - "6379:6379"
-  notification.service.presentation:
-    image: notification.service.presentation
-    build:
-      context: .
-      dockerfile: Notification.Service/Notification.Service.Presentation/Dockerfile
 
-  notification.service.presentation-1:
-    image: notification.service.presentation-1
-    build:
-      context: .
-      dockerfile: Notification.Service/Notification.Service.Presentation/Dockerfile
+  elasticsearch:
+    image: bitnami/elasticsearch:8.9.2
+    container_name: elasticsearch
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+    ports:
+      - "9200:9200"
+    volumes:
+      - esdata:/usr/share/elasticsearch/data
+
+  logstash:
+    image: bitnami/logstash:8.9.2
+    container_name: logstash
+    depends_on:
+      - elasticsearch
+    volumes:
+      - ./logstash.conf:/usr/share/logstash/pipeline/logstash.conf
+    ports:
+      - "5044:5044"
+
+  kibana:
+    image: bitnami/kibana:8.9.2
+    container_name: kibana
+    depends_on:
+      - elasticsearch
+    ports:
+      - "5601:5601"
+
+volumes:
+  postgres_data:
+  esdata:
+  mongo-data:

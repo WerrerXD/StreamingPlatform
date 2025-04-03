@@ -7,7 +7,12 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Stream.Service.Shared\Stream.Service.Shared.csproj" />
+      <ProjectReference Include="..\Stream.Service.Domain\Stream.Service.Domain.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.Extensions.Options" Version="8.0.2" />
+      <PackageReference Include="MongoDB.Driver" Version="3.3.0" />
     </ItemGroup>
 
 </Project>

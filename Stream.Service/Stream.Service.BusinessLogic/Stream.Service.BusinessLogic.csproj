@@ -8,7 +8,6 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Stream.Service.DataAccess\Stream.Service.DataAccess.csproj" />
-      <ProjectReference Include="..\Stream.Service.Shared\Stream.Service.Shared.csproj" />
     </ItemGroup>
 
 </Project>
