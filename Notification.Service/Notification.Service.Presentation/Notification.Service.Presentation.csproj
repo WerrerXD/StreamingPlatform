@@ -2,12 +2,26 @@
 
     <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>
+	<PublishSingleFile>false</PublishSingleFile>
+  	<SelfContained>false</SelfContained>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     </PropertyGroup>
 
     <ItemGroup>
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0"/>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Notification.Service.Application\Notification.Service.Application.csproj" />
+      <ProjectReference Include="..\Notification.Service.Shared\Notification.Service.Shared.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Include="..\..\.dockerignore">
+        <Link>.dockerignore</Link>
+      </Content>
     </ItemGroup>
 
 </Project>
