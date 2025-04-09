@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 using Stream.Service.BusinessLogic.Handlers;
+using Stream.Service.BusinessLogic.Mappings;
 using Stream.Service.BusinessLogic.Queries;
 using Stream.Service.DataAccess.Repositories;
 using Stream.Service.Domain.Interfaces;
@@ -16,11 +17,14 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddControllers();
 
+builder.Services.AddAutoMapper(typeof(TestProfile));
+
 builder.Services.Configure<DatabaseSettings>(builder.Configuration.GetSection("DatabaseSettings"));
 builder.Services.AddSingleton<IMongoClient>(sp =>
     new MongoClient(sp.GetRequiredService<IOptions<DatabaseSettings>>().Value.ConnectionString));
 
 builder.Services.AddScoped<IStreamRepository, StreamRepository>();
+builder.Services.AddScoped<IStreamCategoryRepository, StreamCategoryRepository>();
 
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(CreateStreamHandler).Assembly));
 

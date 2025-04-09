@@ -13,8 +13,8 @@ public class StreamModel
     public string Title { get; set; } = null!;
     public string Description { get; set; } = null!;
     public string CategoryId { get; set; } = null!;
-    public DateTime StartTime { get; set; }
+    public DateTime StartTime { get; set; } = DateTime.UtcNow;
     public DateTime? EndTime { get; set; }
-    public int ViewersCount { get; set; }
+    public int ViewersCount { get; set; } = 0;
     public List<ChatMessage> ChatMessages { get; set; } = new();
 }
