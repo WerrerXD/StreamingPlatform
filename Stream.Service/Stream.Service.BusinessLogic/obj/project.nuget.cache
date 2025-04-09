@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "vvnnGiOh/m4=",
+  "dgSpecHash": "Squp1zNwsOY=",
   "success": true,
   "projectFilePath": "D:\\Projects\\StreamingPlatform\\Stream.Service\\Stream.Service.BusinessLogic\\Stream.Service.BusinessLogic.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Andrew\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\Andrew\\.nuget\\packages\\dnsclient\\1.6.1\\dnsclient.1.6.1.nupkg.sha512",
     "C:\\Users\\Andrew\\.nuget\\packages\\mediatr\\12.5.0\\mediatr.12.5.0.nupkg.sha512",
     "C:\\Users\\Andrew\\.nuget\\packages\\mediatr.contracts\\2.0.1\\mediatr.contracts.2.0.1.nupkg.sha512",

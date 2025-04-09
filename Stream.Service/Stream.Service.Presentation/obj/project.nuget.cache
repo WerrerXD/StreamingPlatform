@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "kCr5tW1yuRU=",
+  "dgSpecHash": "FuHxOXROMOA=",
   "success": true,
   "projectFilePath": "D:\\Projects\\StreamingPlatform\\Stream.Service\\Stream.Service.Presentation\\Stream.Service.Presentation.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Andrew\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\Andrew\\.nuget\\packages\\dnsclient\\1.6.1\\dnsclient.1.6.1.nupkg.sha512",
     "C:\\Users\\Andrew\\.nuget\\packages\\mediatr\\12.5.0\\mediatr.12.5.0.nupkg.sha512",
     "C:\\Users\\Andrew\\.nuget\\packages\\mediatr.contracts\\2.0.1\\mediatr.contracts.2.0.1.nupkg.sha512",

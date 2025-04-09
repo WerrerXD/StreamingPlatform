@@ -17,6 +17,6 @@ public class GetStreamByIdHandler: IRequestHandler<GetStreamByIdQuery, StreamMod
 
     public async Task<StreamModel> Handle(GetStreamByIdQuery request, CancellationToken cancellationToken)
     {
-        return await _repository.GetByIdAsync(request.StreamId);
+        return await _repository.GetByIdAsync(request.StreamId, cancellationToken);
     }
 }

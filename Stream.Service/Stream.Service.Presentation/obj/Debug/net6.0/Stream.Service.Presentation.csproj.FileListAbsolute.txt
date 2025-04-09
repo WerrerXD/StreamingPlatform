@@ -75,3 +75,4 @@ D:\Projects\StreamingPlatform\Stream.Service\Stream.Service.Presentation\bin\Deb
 D:\Projects\StreamingPlatform\Stream.Service\Stream.Service.Presentation\bin\Debug\net6.0\Stream.Service.Domain.pdb
 D:\Projects\StreamingPlatform\Stream.Service\Stream.Service.Presentation\bin\Debug\net6.0\MediatR.dll
 D:\Projects\StreamingPlatform\Stream.Service\Stream.Service.Presentation\bin\Debug\net6.0\MediatR.Contracts.dll
+D:\Projects\StreamingPlatform\Stream.Service\Stream.Service.Presentation\bin\Debug\net6.0\AutoMapper.dll
