@@ -8,4 +8,5 @@ public interface IStreamRepository
     Task<StreamModel?> GetByIdAsync(string id, CancellationToken cancellationToken);
     Task<List<StreamModel>> GetAllByStreamerAsync(string streamerId, CancellationToken cancellationToken);
     Task EndStreamAsync(string streamId, CancellationToken cancellationToken);
+    Task<List<StreamModel>> GetAllActiveAsync(CancellationToken cancellationToken);
 }

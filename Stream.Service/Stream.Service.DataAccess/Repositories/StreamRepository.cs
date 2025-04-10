@@ -48,4 +48,9 @@ public class StreamRepository : IStreamRepository
             cancellationToken: cancellationToken
         );
     }
+    
+    public async Task<List<StreamModel>> GetAllActiveAsync(CancellationToken cancellationToken)
+    {
+        return await _collection.Find(s => s.EndTime == null).ToListAsync(cancellationToken);
+    }
 }

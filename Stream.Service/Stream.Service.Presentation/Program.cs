@@ -29,7 +29,6 @@ builder.Services.AddScoped<IStreamCategoryRepository, StreamCategoryRepository>(
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(CreateStreamHandler).Assembly));
 
 
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
