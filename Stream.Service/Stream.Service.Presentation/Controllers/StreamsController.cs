@@ -24,42 +24,14 @@ public class StreamsController : ControllerBase
         return Ok(new { id = streamId });
     }
 
-    [HttpGet]
+    [HttpGet("{streamId}")]
     public async Task<IActionResult> GetStreamById(string streamId, CancellationToken cancellationToken)
     {
         var stream = await _mediator.Send(new GetStreamByIdQuery(streamId), cancellationToken);
         return Ok(stream);
     }
 
-    [HttpPost("categories")]
-    public async Task<IActionResult> CreateStreamCategory([FromBody] CreateStreamCategoryCommand command, CancellationToken cancellationToken)
-    {
-        var streamCategoryId = await _mediator.Send(command, cancellationToken);
-        return Ok(new { id = streamCategoryId });
-    }
-    
-    [HttpGet("categories")]
-    public async Task<IActionResult> GetAllStreamCategories(CancellationToken cancellationToken)
-    {
-        var streamCategories = await _mediator.Send(new GetAllStreamCategoriesQuery(), cancellationToken);
-        return Ok(streamCategories);
-    }
-    
-    [HttpPut("categories")]
-    public async Task<IActionResult> ChangeStreamCategory([FromForm] ChangeStreamCategoryCommand command, CancellationToken cancellationToken)
-    {
-        await _mediator.Send(command, cancellationToken);
-        return Ok();
-    }
-    
-    [HttpDelete("categories")]
-    public async Task<IActionResult> DeleteStreamCategory([FromForm] DeleteStreamCategoryCommand command, CancellationToken cancellationToken)
-    {
-        await _mediator.Send(command, cancellationToken);
-        return Ok();
-    }
-
-    [HttpGet("{streamerId}")]
+    [HttpGet("{streamerId}/streams")]
     public async Task<IActionResult> GetStreamsByStreamer(string streamerId, CancellationToken cancellationToken)
     {
         var streams = await _mediator.Send(new GetAllStreamerStreamsQuery(streamerId), cancellationToken);
@@ -71,5 +43,12 @@ public class StreamsController : ControllerBase
     {
         await _mediator.Send(new EndStreamCommand(streamId), cancellationToken);
         return Ok();
+    }
+
+    [HttpGet("active")]
+    public async Task<IActionResult> GetActiveStreams(CancellationToken cancellationToken)
+    {
+        var streams = await _mediator.Send(new GetAllActiveStreamsQuery(), cancellationToken);
+        return Ok(streams);
     }
 }
