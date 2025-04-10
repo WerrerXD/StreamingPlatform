@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Notification.Service.Domain\Notification.Service.Domain.csproj" />
+      <ProjectReference Include="..\Notification.Service.Infrastructure\Notification.Service.Infrastructure.csproj" />
+      <ProjectReference Include="..\Notification.Service.Shared\Notification.Service.Shared.csproj" />
+    </ItemGroup>
+
+</Project>
