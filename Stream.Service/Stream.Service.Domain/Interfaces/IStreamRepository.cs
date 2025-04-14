@@ -9,4 +9,7 @@ public interface IStreamRepository
     Task<List<StreamModel>> GetAllByStreamerAsync(string streamerId, CancellationToken cancellationToken);
     Task EndStreamAsync(string streamId, CancellationToken cancellationToken);
     Task<List<StreamModel>> GetAllActiveAsync(CancellationToken cancellationToken);
+    Task UpdateTitleAsync(string title, string streamId, CancellationToken cancellationToken);
+    Task UpdateDescriptionAsync(string description, string streamId, CancellationToken cancellationToken);
+    Task UpdateCategoryAsync(string categoryId, string streamId, CancellationToken cancellationToken);
 }

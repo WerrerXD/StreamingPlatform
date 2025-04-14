@@ -8,9 +8,10 @@ public class TestProfile: Profile
 {
     public TestProfile() 
     {
-        CreateMap<ChangeStreamCategoryCommand, StreamCategory>();
         CreateMap<CreateStreamCategoryCommand, StreamCategory>();
 
         CreateMap<CreateStreamCommand, StreamModel>();
+
+        CreateMap<CreateChatMessageCommand, ChatMessage>();
     }
 }

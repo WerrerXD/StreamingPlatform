@@ -16,5 +16,4 @@ public class StreamModel
     public DateTime StartTime { get; set; } = DateTime.UtcNow;
     public DateTime? EndTime { get; set; }
     public int ViewersCount { get; set; } = 0;
-    public List<ChatMessage> ChatMessages { get; set; } = new();
 }

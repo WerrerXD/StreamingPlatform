@@ -18,7 +18,8 @@ public class StreamsController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> CreateStream([FromBody] CreateStreamCommand command, CancellationToken cancellationToken)
+    public async Task<IActionResult> CreateStream([FromBody] CreateStreamCommand command,
+        CancellationToken cancellationToken)
     {
         var streamId = await _mediator.Send(command, cancellationToken);
         return Ok(new { id = streamId });
@@ -51,4 +52,13 @@ public class StreamsController : ControllerBase
         var streams = await _mediator.Send(new GetAllActiveStreamsQuery(), cancellationToken);
         return Ok(streams);
     }
+
+    [HttpPut]
+    public async Task<IActionResult> ChangeStream([FromForm] ChangeStreamCommand command, CancellationToken cancellationToken)
+    {
+        await _mediator.Send(command, cancellationToken);
+        return Ok();
+    }
+    
+    
 }
