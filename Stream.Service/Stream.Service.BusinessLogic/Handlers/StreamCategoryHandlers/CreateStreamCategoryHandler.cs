@@ -4,7 +4,7 @@ using Stream.Service.BusinessLogic.Commands;
 using Stream.Service.Domain.Interfaces;
 using Stream.Service.Domain.Models;
 
-namespace Stream.Service.BusinessLogic.Handlers;
+namespace Stream.Service.BusinessLogic.Handlers.StreamCategoryHandlers;
 
 public class CreateStreamCategoryHandler: IRequestHandler<CreateStreamCategoryCommand, string>
 {

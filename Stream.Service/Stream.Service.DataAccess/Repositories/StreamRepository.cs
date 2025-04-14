@@ -53,4 +53,37 @@ public class StreamRepository : IStreamRepository
     {
         return await _collection.Find(s => s.EndTime == null).ToListAsync(cancellationToken);
     }
+
+    public async Task UpdateTitleAsync(string title, string streamId, CancellationToken cancellationToken)
+    {
+        var update = Builders<StreamModel>.Update.Set(s => s.Title, title);
+        
+        await _collection.UpdateOneAsync(
+            s => s.Id == streamId,
+            update,
+            cancellationToken: cancellationToken
+        );
+    }
+    
+    public async Task UpdateDescriptionAsync(string description, string streamId, CancellationToken cancellationToken)
+    {
+        var update = Builders<StreamModel>.Update.Set(s => s.Description, description);
+        
+        await _collection.UpdateOneAsync(
+            s => s.Id == streamId,
+            update,
+            cancellationToken: cancellationToken
+        );
+    }
+    
+    public async Task UpdateCategoryAsync(string categoryId, string streamId, CancellationToken cancellationToken)
+    {
+        var update = Builders<StreamModel>.Update.Set(s => s.CategoryId, categoryId);
+        
+        await _collection.UpdateOneAsync(
+            s => s.Id == streamId,
+            update,
+            cancellationToken: cancellationToken
+        );
+    }
 }

@@ -1,8 +1,9 @@
 using MediatR;
 using Stream.Service.BusinessLogic.Commands;
+using Stream.Service.BusinessLogic.Exceptions;
 using Stream.Service.Domain.Interfaces;
 
-namespace Stream.Service.BusinessLogic.Handlers;
+namespace Stream.Service.BusinessLogic.Handlers.StreamCategoryHandlers;
 
 public class DeleteStreamCategoryHandler: IRequestHandler<DeleteStreamCategoryCommand>
 {
@@ -16,7 +17,7 @@ public class DeleteStreamCategoryHandler: IRequestHandler<DeleteStreamCategoryCo
     public async Task Handle(DeleteStreamCategoryCommand request, CancellationToken cancellationToken)
     {
         var streamCategory = await _repository.GetStreamCategoryById(request.CategoryId, cancellationToken) 
-            ?? throw new Exception("Stream category does not exist");
+            ?? throw new NotFoundException("Stream category does not exist");
         await _repository.DeleteStreamCategory(streamCategory, cancellationToken);
     }
 }

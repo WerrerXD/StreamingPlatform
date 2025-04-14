@@ -1,10 +1,10 @@
 using MediatR;
-using Stream.Service.BusinessLogic.Commands;
+using Stream.Service.BusinessLogic.Exceptions;
 using Stream.Service.BusinessLogic.Queries;
 using Stream.Service.Domain.Interfaces;
 using Stream.Service.Domain.Models;
 
-namespace Stream.Service.BusinessLogic.Handlers;
+namespace Stream.Service.BusinessLogic.Handlers.StreamHandlers;
 
 public class GetStreamByIdHandler: IRequestHandler<GetStreamByIdQuery, StreamModel>
 {
@@ -17,6 +17,8 @@ public class GetStreamByIdHandler: IRequestHandler<GetStreamByIdQuery, StreamMod
 
     public async Task<StreamModel> Handle(GetStreamByIdQuery request, CancellationToken cancellationToken)
     {
-        return await _repository.GetByIdAsync(request.StreamId, cancellationToken);
+        var stream = await _repository.GetByIdAsync(request.StreamId, cancellationToken)
+            ?? throw new NotFoundException("Stream does not exist");
+        return stream;
     }
 }

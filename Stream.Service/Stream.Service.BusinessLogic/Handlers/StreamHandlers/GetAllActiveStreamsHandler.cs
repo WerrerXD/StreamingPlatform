@@ -3,7 +3,7 @@ using Stream.Service.BusinessLogic.Queries;
 using Stream.Service.Domain.Interfaces;
 using Stream.Service.Domain.Models;
 
-namespace Stream.Service.BusinessLogic.Handlers;
+namespace Stream.Service.BusinessLogic.Handlers.StreamHandlers;
 
 public class GetAllActiveStreamsHandler: IRequestHandler<GetAllActiveStreamsQuery, List<StreamModel>>
 {
