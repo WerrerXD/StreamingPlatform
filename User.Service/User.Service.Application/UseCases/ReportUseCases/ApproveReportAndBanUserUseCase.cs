@@ -1,6 +1,8 @@
+using Elastic.Clients.Elasticsearch.Snapshot;
 using User.Service.Application.Exceptions;
 using User.Service.Application.UseCases.ReportUseCases.ReportUseCasesInterfaces;
 using User.Service.Application.UseCases.UserUseCases.UserUseCasesInterfaces;
+using User.Service.Domain.Enums;
 using User.Service.Domain.Interfaces;
 
 namespace User.Service.Application.UseCases.ReportUseCases;
@@ -18,18 +20,26 @@ public class ApproveReportAndBanUserUseCase : IApproveReportAndBanUserUseCase
     
     public async Task ExecuteAsync(Guid reportId, int daysBanned, CancellationToken cancellationToken)
     {
-        var report = await _reportRepository.GetReportById(reportId, cancellationToken) ?? 
-                     throw new NotFoundException("Report is not found");
-        if(!await _userRepository.IsExistByIdAsync(report.ReporterId, cancellationToken))
+        var report = await _reportRepository.GetReportByIdAsync(reportId, cancellationToken) 
+            ?? throw new NotFoundException("Report is not found");
+
+        var isReporterExist = await _userRepository.IsExistByIdAsync(report.ReporterId, cancellationToken);
+
+        if (!isReporterExist)
+        {
             throw new NotFoundException("User that is reported does not exist");
-        if(!await _userRepository.IsExistByIdAsync(report.ReportedId, cancellationToken))
-            throw new NotFoundException("User you are going to block is not found");
+        }
         
-        await _userRepository.BanUserUntil(report.ReportedId, daysBanned, cancellationToken);
+        var reportedUser = await _userRepository.GetByIdAsync(report.ReportedId, cancellationToken)
+            ?? throw new NotFoundException("User you are going to block is not found");
         
-        await _reportRepository.SetStatus(reportId,"Approved",cancellationToken);
+        reportedUser.IsBlocked = true;
+        reportedUser.BlockedUntil = DateTime.UtcNow.AddDays(daysBanned);
         
-        await _userRepository.Save(cancellationToken);
-        await _reportRepository.Save(cancellationToken);
+        await _userRepository.UpdateAsync(reportedUser, cancellationToken);
+        
+        report.Status = ReportStatus.Approved.ToString();
+        
+        await _reportRepository.UpdateAsync(report, cancellationToken);
     }
 }

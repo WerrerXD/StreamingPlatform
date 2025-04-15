@@ -1,4 +1,4 @@
-namespace User.Service.Domain.Interfaces;
+namespace User.Service.Application.Abstractions;
 
 public interface IUnblockExpiredUsersService
 {

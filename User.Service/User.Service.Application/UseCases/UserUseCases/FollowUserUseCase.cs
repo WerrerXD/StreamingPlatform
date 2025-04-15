@@ -16,19 +16,31 @@ public class FollowUserUseCase : IFollowUserUseCase
     
     public async Task ExecuteAsync(Guid followerId, Guid followeeId, CancellationToken cancellationToken)
     {
-        if(!await _userRepository.IsExistByIdAsync(followerId, cancellationToken))
-            throw new NotFoundException("User is not found");
-        if(!await _userRepository.IsExistByIdAsync(followeeId, cancellationToken))
-            throw new NotFoundException("User you are going to follow is not found");
-        if(await _userRepository.IsFollowingUser(followerId, followeeId, cancellationToken))
+        var follower = await _userRepository.GetByIdAsync(followerId, cancellationToken)
+            ?? throw new NotFoundException("User is not found");
+        
+        var followee = await _userRepository.GetByIdAsync(followeeId, cancellationToken)
+            ?? throw new NotFoundException("User you are going to follow is not found");
+
+        var isFollowing = await _userRepository.IsFollowingUserAsync(followerId, followeeId, cancellationToken);
+        
+        if(isFollowing)
         {
             throw new AlreadyExistsException("You are already following this user");
         }
+        
         Follow followModel = new()
         {
             FollowerId = followerId,
             FollowingId = followeeId
         };
-        await _userRepository.FollowUser(followModel, cancellationToken);
+        
+        await _userRepository.FollowUserAsync(followModel, cancellationToken);
+        
+        follower.FollowingCount++;
+        followee.FollowersCount++;
+        
+        await _userRepository.UpdateAsync(follower, cancellationToken);
+        await _userRepository.UpdateAsync(followee, cancellationToken);
     }
 }

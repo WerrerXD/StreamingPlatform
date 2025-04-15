@@ -3,9 +3,10 @@ using User.Service.Domain.Entities;
 namespace User.Service.Domain.Interfaces;
 
 public interface IRepository<T> where T : class  {
-    Task<List<T>> GetAll(CancellationToken cancellationToken);
-    Task Create(T entity, CancellationToken cancellationToken);
-    Task Update(T entity);
-    Task Delete(T entity);
-    Task Save(CancellationToken cancellationToken);
+    Task<List<T>> GetAllAsync(CancellationToken cancellationToken);
+    Task CreateAsync(T entity, CancellationToken cancellationToken);
+    Task UpdateAsync(T entity, CancellationToken cancellationToken);
+    Task DeleteAsync(T entity, CancellationToken cancellationToken);
+    Task DeleteRangeAsync(List<T> entities, CancellationToken cancellationToken);
+    Task UpdateRangeAsync(List<T> entities, CancellationToken cancellationToken);
 }

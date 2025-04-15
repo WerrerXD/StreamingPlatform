@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Http;
+using User.Service.Application.Abstractions;
 using User.Service.Application.Exceptions;
 using User.Service.Domain.Interfaces;
 
@@ -17,31 +18,33 @@ public class ChangeUserProfile : IChangeUserProfile
     
     public async Task ExecuteAsync(Guid userId, string? userName, string? description, IFormFile? avatarPhoto, CancellationToken cancellationToken)
     {
-        if (!await _userRepository.IsExistByIdAsync(userId, cancellationToken))
-            throw new NotFoundException("User does not exist");
+        var user = await _userRepository.GetByIdAsync(userId, cancellationToken)
+            ?? throw new NotFoundException("User does not exist");
         
-
         if (avatarPhoto != null)
         {
             var coverUrl = await _fileStorageService.SaveFileAsync(avatarPhoto, "users-avatars");
-            await _userRepository.SetAvatarUrl(userId, coverUrl, cancellationToken);
+            
+            user.AvatarUrl = coverUrl;
         }
 
         if (!string.IsNullOrEmpty(userName))
         {
-            var testUser = await _userRepository.GetByUsernameAsync(userName, cancellationToken);
-            if (testUser != null)
+            var existingUser = await _userRepository.GetByUsernameAsync(userName, cancellationToken);
+            
+            if (existingUser != null)
             {
                 throw new AlreadyExistsException("User with this username already exists"); 
             }
-            await _userRepository.SetUserName(userId, userName, cancellationToken);
+            
+            user.UserName = userName;
         }
         
         if (!string.IsNullOrEmpty(description))
         {
-            await _userRepository.SetDescription(userId, description, cancellationToken);
+            user.Description = description;
         }
         
-        await _userRepository.Save(cancellationToken);
+        await _userRepository.UpdateAsync(user, cancellationToken);
     }
 }

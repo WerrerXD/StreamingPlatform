@@ -9,12 +9,12 @@
     <ItemGroup>
       <ProjectReference Include="..\User.Service.Domain\User.Service.Domain.csproj" />
       <ProjectReference Include="..\User.Service.Infrastructure\User.Service.Infrastructure.csproj" />
-      <ProjectReference Include="..\User.Service.Shared\User.Service.Shared.csproj" />
     </ItemGroup>
 
     <ItemGroup>
       <PackageReference Include="AutoMapper" Version="13.0.1" />
       <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
+      <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.6.1" />
     </ItemGroup>
 
 </Project>

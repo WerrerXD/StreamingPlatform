@@ -2,6 +2,6 @@
 {
     public interface IRefreshTokenUseCase
     {
-        Task<string> ExecuteAsync(string refreshToken, CancellationToken cancellationToken);
+        Task<(string AccessToken, string RefreshToken)> ExecuteAsync(string refreshToken, CancellationToken cancellationToken);
     }
 }

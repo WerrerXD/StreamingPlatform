@@ -4,8 +4,7 @@ namespace User.Service.Domain.Interfaces;
 
 public interface IRefreshTokenRepository: IRepository<RefreshToken>
 {
-    Task<RefreshToken> GetNotExpiredToken(Guid userId, CancellationToken cancellationToken);
-    Task<bool> IsExistByUserId(Guid id, CancellationToken cancellationToken);
+    Task<RefreshToken> GetNotExpiredTokenAsync(Guid userId, CancellationToken cancellationToken);
+    Task<bool> IsExistByUserIdAsync(Guid id, CancellationToken cancellationToken);
     Task<RefreshToken> GetTokenAsync(string refreshToken, CancellationToken cancellationToken);
-    Task DeleteExpiredTokens(CancellationToken cancellationToken);
 }

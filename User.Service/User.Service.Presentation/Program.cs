@@ -1,19 +1,11 @@
-
-using Elastic.Clients.Elasticsearch;
 using FluentValidation.AspNetCore;
 using Hangfire;
 using Hangfire.PostgreSql;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.OpenApi.Any;
-using Microsoft.OpenApi.Models;
-using Npgsql;
-using Serilog;
-using Serilog.Sinks.Elasticsearch;
 using StackExchange.Redis;
+using User.Service.Application.Abstractions;
 using User.Service.Application.Mappings;
 using User.Service.Application.Services;
-using User.Service.Application.UseCases.UserUseCases;
-using User.Service.Application.UseCases.UserUseCases.UserUseCasesInterfaces;
 using User.Service.Application.Validators;
 using User.Service.Domain.Interfaces;
 using User.Service.Infrastructure;
@@ -24,10 +16,12 @@ using User.Service.Shared;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.Configure<JwtOptions>(builder.Configuration.GetSection(nameof(JwtOptions)));
+
 var redis = ConnectionMultiplexer.Connect("redis");
 builder.Services.AddSingleton<IConnectionMultiplexer>(redis);
 
-builder.Services.AddAutoMapper(typeof(TestProfile));
+builder.Services.AddAutoMapper(typeof(MappingProfile));
 
 // Add services to the container.
 builder.Services.AddHttpContextAccessor();
@@ -38,8 +32,6 @@ builder.Services.AddHangfire(config =>
 {
     config.UsePostgreSqlStorage(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
-
-
 
 builder.Services.AddControllers()
     .AddFluentValidation(fv => fv.RegisterValidatorsFromAssembly(typeof(RegisterUserRequestValidator).Assembly));
@@ -53,7 +45,6 @@ builder.Services.AddSingleton<IElasticsearchService, ElasticsearchService>(sp =>
     new ElasticsearchService("http://elasticsearch:9200"));
 
 builder.Services.AddScoped<ILoggingService, LoggingService>();
-
 
 builder.Services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
 builder.Services.AddScoped<IPasswordHasher, PasswordHasher>();
@@ -72,9 +63,9 @@ builder.Services.AddHangfireServer();
 builder.Services.AddSwaggerGen();
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseNpgsql(connectionString));
-
 
 var app = builder.Build();
 
@@ -93,7 +84,7 @@ app.UseHangfireDashboard("/hangfire");
 
 RecurringJob.AddOrUpdate<IDeleteExpiredTokensService>(
     "CleanupExpiredTokens",
-    service => service.DeleteExpiredTokens(default),
+    service => service.DeleteExpiredTokensAsync(default),
     Cron.Daily);
 
 RecurringJob.AddOrUpdate<IUnblockExpiredUsersService>(
@@ -103,7 +94,6 @@ RecurringJob.AddOrUpdate<IUnblockExpiredUsersService>(
 
 app.UseMiddleware<TokenValidationMiddleware>();
 app.UseMiddleware<ExceptionMiddleware>();
-
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

@@ -1,3 +1,4 @@
+using User.Service.Application.Abstractions;
 using User.Service.Application.Exceptions;
 using User.Service.Application.UseCases.UserUseCases.UserUseCasesInterfaces;
 using User.Service.Domain.Entities;
@@ -25,13 +26,13 @@ public class LoginUserUseCase : ILoginUserUseCase
 
     public async Task<(string AccessToken, string RefreshToken)> ExecuteAsync(string email, string password, CancellationToken cancellationToken)
     {
-        if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
-            throw new BadRequestException("User data can not be empty");
-        var user = await _userRepository.GetByEmailAsync(email, cancellationToken) ?? throw new UnauthorizedException("Invalid data");
+        var user = await _userRepository.GetByEmailAsync(email, cancellationToken);
         
-        var result = _passwordHasher.Verify(password, user.PasswordHash);
+        var isPasswordValid = _passwordHasher.Verify(password, user.PasswordHash);
+        
+        var isAuthenticationSuccessful = user is not null && isPasswordValid;
 
-        if (result == false)
+        if (isAuthenticationSuccessful == false)
         {
             throw new UnauthorizedException("Invalid data");
         }
@@ -50,9 +51,8 @@ public class LoginUserUseCase : ILoginUserUseCase
             ExpiresAt = DateTime.UtcNow.AddDays(1)
         };
 
-        await _refreshTokenRepository.Create(refreshTokenModel, cancellationToken);
-        await _refreshTokenRepository.Save(cancellationToken);
+        await _refreshTokenRepository.CreateAsync(refreshTokenModel, cancellationToken);
 
-        return (jwtToken,refreshToken);
+        return (jwtToken, refreshToken);
     }
 }

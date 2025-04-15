@@ -16,6 +16,6 @@ public class GetAllReportsUseCase : IGetAllReportsUseCase
     
     public async Task<List<Report>> ExecuteAsync(CancellationToken cancellationToken)
     {
-        return await _reportRepository.GetAll(cancellationToken);
+        return await _reportRepository.GetAllAsync(cancellationToken);
     }
 }

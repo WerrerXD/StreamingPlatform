@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Http;
 
-namespace User.Service.Domain.Interfaces;
+namespace User.Service.Application.Abstractions;
 
 public interface IFileStorageService
 {

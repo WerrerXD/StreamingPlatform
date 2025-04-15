@@ -1,5 +1,5 @@
 ﻿
-using User.Service.Domain.Interfaces;
+using User.Service.Application.Abstractions;
 
 namespace User.Service.Shared
 {

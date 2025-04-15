@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Http;
 
-namespace User.Service.Shared.DTO;
+namespace User.Service.Application.Contracts;
 
 public record ChangeUserProfileRequest
 {

@@ -1,3 +1,5 @@
+using User.Service.Application.Abstractions;
+using User.Service.Application.Contracts;
 using User.Service.Application.Exceptions;
 using User.Service.Application.UseCases.UserUseCases.UserUseCasesInterfaces;
 using User.Service.Domain.Entities;
@@ -17,29 +19,32 @@ public class RegisterUserUseCase : IRegisterUserUseCase
         _passwordHasher = passwordHasher;
     }
     
-    public async Task ExecuteAsync(string userName, string email, string password, CancellationToken cancellationToken)
+    public async Task ExecuteAsync(RegisterUserRequest request, CancellationToken cancellationToken)
     {
-        var testUser = await _userRepository.GetByEmailAsync(email, cancellationToken);
-        if (testUser != null)
+        var existingUser = await _userRepository.GetByEmailAsync(request.Email, cancellationToken);
+        
+        if (existingUser != null)
         {
             throw new AlreadyExistsException("User with this email already exists"); 
         }
-        var testUserName = await _userRepository.GetByUsernameAsync(userName, cancellationToken);
-        if (testUserName != null)
+        
+        var existingUserWithUsername = await _userRepository.GetByUsernameAsync(request.Username, cancellationToken);
+        
+        if (existingUserWithUsername != null)
         {
             throw new AlreadyExistsException("User with this username already exists"); 
         }
-        var hashedPassword = _passwordHasher.Generate(password);
+        
+        var hashedPassword = _passwordHasher.Generate(request.Password);
 
         var user = new AppUser
         {
             Id = Guid.NewGuid(),
-            UserName = userName,
-            Email = email,
+            UserName = request.Username,
+            Email = request.Email,
             PasswordHash = hashedPassword
         };
 
-        await _userRepository.Create(user, cancellationToken);
-        await _userRepository.Save(cancellationToken);
+        await _userRepository.CreateAsync(user, cancellationToken);
     }
 }

@@ -13,29 +13,38 @@ public class Repository<T> : IRepository<T> where T : class
         _context = context;
     }
 
-    public async Task<List<T>> GetAll(CancellationToken cancellationToken)
+    public async Task<List<T>> GetAllAsync(CancellationToken cancellationToken)
     {
-        return await _context.Set<T>().ToListAsync(cancellationToken);
+        return await _context.Set<T>().AsNoTracking().ToListAsync(cancellationToken);
     }
 
-    public async Task Create(T entity,CancellationToken cancellationToken)
+    public async Task CreateAsync(T entity, CancellationToken cancellationToken)
     {
         await _context.Set<T>().AddAsync(entity, cancellationToken);
         await _context.SaveChangesAsync(cancellationToken);
     }
 
-    public async Task Update(T entity)
+    public async Task UpdateAsync(T entity, CancellationToken cancellationToken)
     {
         _context.Set<T>().Update(entity);
+        await _context.SaveChangesAsync(cancellationToken);
     }
 
-    public async Task Delete(T entity)
+    public async Task DeleteAsync(T entity, CancellationToken cancellationToken)
     {
         _context.Set<T>().Remove(entity);
+        await _context.SaveChangesAsync(cancellationToken);
     }
 
-    public async Task Save(CancellationToken cancellationToken)
+    public async Task DeleteRangeAsync(List<T> entities, CancellationToken cancellationToken)
     {
+        _context.Set<T>().RemoveRange(entities);
+        await _context.SaveChangesAsync(cancellationToken);
+    }
+
+    public async Task UpdateRangeAsync(List<T> entities, CancellationToken cancellationToken)
+    {
+        _context.Set<T>().UpdateRange(entities);
         await _context.SaveChangesAsync(cancellationToken);
     }
 }

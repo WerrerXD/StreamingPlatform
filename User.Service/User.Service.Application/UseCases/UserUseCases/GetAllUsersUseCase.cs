@@ -15,6 +15,6 @@ public class GetAllUsersUseCase:IGetAllUsersUseCase
     
     public async Task<List<AppUser>> ExecuteAsync(CancellationToken cancellationToken)
     {
-        return await _userRepository.GetAll(cancellationToken);
+        return await _userRepository.GetAllAsync(cancellationToken);
     }
 }

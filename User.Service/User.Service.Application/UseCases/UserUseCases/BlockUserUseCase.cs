@@ -15,11 +15,12 @@ public class BlockUserUseCase : IBlockUserUseCase
     
     public async Task ExecuteAsync(Guid userId, int daysBanned, CancellationToken cancellationToken)
     {
-        if(!await _userRepository.IsExistByIdAsync(userId, cancellationToken))
-            throw new NotFoundException("User you are going to block is not found");
+        var user = await _userRepository.GetByIdAsync(userId, cancellationToken) 
+            ?? throw new NotFoundException("User you are going to block is not found");
         
-        await _userRepository.BanUserUntil(userId, daysBanned, cancellationToken);
+        user.IsBlocked = true;
+        user.BlockedUntil = DateTime.UtcNow.AddDays(daysBanned);
         
-        await _userRepository.Save(cancellationToken);
+        await _userRepository.UpdateAsync(user, cancellationToken);
     }
 }

@@ -1,3 +1,4 @@
+using User.Service.Application.Abstractions;
 using User.Service.Domain.Interfaces;
 
 namespace User.Service.Application.Services;

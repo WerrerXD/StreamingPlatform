@@ -11,15 +11,16 @@ public class RefreshTokenRepository: Repository<RefreshToken>, IRefreshTokenRepo
     {
     }
 
-    public async Task<RefreshToken> GetNotExpiredToken(Guid userId, CancellationToken cancellationToken)
+    public async Task<RefreshToken> GetNotExpiredTokenAsync(Guid userId, CancellationToken cancellationToken)
     {
         var refreshToken = await _context.RefreshTokens
             .OrderBy(rt => rt.ExpiresAt)
             .LastOrDefaultAsync(rt => rt.UserId == userId && rt.ExpiresAt > DateTime.UtcNow, cancellationToken);
+        
         return refreshToken;
     }
 
-    public async Task<bool> IsExistByUserId(Guid id, CancellationToken cancellationToken)
+    public async Task<bool> IsExistByUserIdAsync(Guid id, CancellationToken cancellationToken)
     {
         return await _context.RefreshTokens.AnyAsync(rt => rt.UserId == id, cancellationToken);
     }
@@ -30,15 +31,4 @@ public class RefreshTokenRepository: Repository<RefreshToken>, IRefreshTokenRepo
             .AsNoTracking()
             .FirstOrDefaultAsync(rt => rt.Token == refreshToken && rt.ExpiresAt > DateTime.UtcNow, cancellationToken);
     }
-
-    public async Task DeleteExpiredTokens(CancellationToken cancellationToken)
-    {
-        var expiredTokens = await _context.RefreshTokens
-            .Where(rt => rt.ExpiresAt < DateTime.UtcNow)
-            .ToListAsync(cancellationToken);
-        
-        _context.RefreshTokens.RemoveRange(expiredTokens);
-        await _context.SaveChangesAsync(cancellationToken);
-    }
-    
 }

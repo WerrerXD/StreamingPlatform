@@ -10,7 +10,7 @@ using User.Service.Shared;
 
 namespace User.Service.Presentation.Extensions;
 
-public static class ApiExtensions
+public static class ServiceCollectionExtensions
 {
     public static void AddApiAuthentication(this IServiceCollection services, IConfiguration configuration)
     {

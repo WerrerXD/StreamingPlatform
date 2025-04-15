@@ -1,6 +1,6 @@
-namespace User.Service.Shared.DTO;
+namespace User.Service.Application.Contracts;
 
-public record ReportDTO
+public record ReportDto
 {
     public Guid Id { get; init; }
     public Guid ReporterId { get; init; }

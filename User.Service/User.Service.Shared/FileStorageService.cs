@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using User.Service.Domain.Interfaces;
+using User.Service.Application.Abstractions;
 
 namespace User.Service.Shared
 {
@@ -15,8 +15,8 @@ namespace User.Service.Shared
 
         public async Task<string> SaveFileAsync(IFormFile file, string folderPath)
         {
-            string folder = folderPath + "/" + Guid.NewGuid().ToString() + "_" + file.FileName;
-            string serverFolder = Path.Combine(_webHostEnvironment.WebRootPath, folder);
+            var folder = folderPath + "/" + Guid.NewGuid().ToString() + "_" + file.FileName;
+            var serverFolder = Path.Combine(_webHostEnvironment.WebRootPath, folder);
 
             await file.CopyToAsync(new FileStream(serverFolder, FileMode.Create));
 

@@ -1,6 +1,5 @@
-using System;
-
 namespace User.Service.Domain.Entities;
+
 public class AppUser
 {
     public Guid Id { get; set; }

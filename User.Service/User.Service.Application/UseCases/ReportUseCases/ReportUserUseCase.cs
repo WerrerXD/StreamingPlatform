@@ -1,7 +1,9 @@
+using User.Service.Application.Contracts;
 using User.Service.Application.Exceptions;
 using User.Service.Application.UseCases.ReportUseCases.ReportUseCasesInterfaces;
 using User.Service.Application.UseCases.UserUseCases.UserUseCasesInterfaces;
 using User.Service.Domain.Entities;
+using User.Service.Domain.Enums;
 using User.Service.Domain.Interfaces;
 
 namespace User.Service.Application.UseCases.ReportUseCases;
@@ -17,19 +19,26 @@ public class ReportUserUseCase : IReportUserUseCase
         _userRepository = userRepository;
     }
     
-    public async Task ExecuteAsync(Guid reporterId, Guid reportedId, string reason, CancellationToken cancellationToken)
+    public async Task ExecuteAsync(ReportUserRequest request, CancellationToken cancellationToken)
     {
-        if(!await _userRepository.IsExistByIdAsync(reporterId, cancellationToken))
+        if (!await _userRepository.IsExistByIdAsync(request.ReporterId, cancellationToken))
+        {
             throw new NotFoundException("User is not found");
-        if(!await _userRepository.IsExistByIdAsync(reportedId, cancellationToken))
+        }
+
+        if (!await _userRepository.IsExistByIdAsync(request.ReportedId, cancellationToken))
+        {
             throw new NotFoundException("User you are going to report is not found");
+        }
+
         Report reportModel = new()
         {
-            ReporterId = reporterId,
-            ReportedId = reportedId,
-            Reason = reason,
-            Status = "Pending"
+            ReporterId = request.ReporterId,
+            ReportedId = request.ReportedId,
+            Reason = request.Reason,
+            Status = ReportStatus.Pending.ToString()
         };
-        await _reportRepository.ReportUser(reportModel, cancellationToken);
+        
+        await _reportRepository.CreateAsync(reportModel, cancellationToken);
     }
 }

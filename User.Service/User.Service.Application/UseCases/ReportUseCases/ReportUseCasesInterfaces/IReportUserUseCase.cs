@@ -1,6 +1,8 @@
+using User.Service.Application.Contracts;
+
 namespace User.Service.Application.UseCases.ReportUseCases.ReportUseCasesInterfaces;
 
 public interface IReportUserUseCase
 {
-    Task ExecuteAsync(Guid reporterId, Guid reportedId, string reason, CancellationToken cancellationToken);
+    Task ExecuteAsync(ReportUserRequest request, CancellationToken cancellationToken);
 }

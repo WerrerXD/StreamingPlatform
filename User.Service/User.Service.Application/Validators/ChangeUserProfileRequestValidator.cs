@@ -1,6 +1,6 @@
 using FluentValidation;
 using Microsoft.AspNetCore.Http;
-using User.Service.Shared.DTO;
+using User.Service.Application.Contracts;
 
 namespace User.Service.Application.Validators;
 

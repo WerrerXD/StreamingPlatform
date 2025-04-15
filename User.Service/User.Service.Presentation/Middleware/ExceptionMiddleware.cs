@@ -1,5 +1,6 @@
 ﻿using System.Net;
 using System.Text.Json;
+using User.Service.Application.Abstractions;
 using User.Service.Application.Exceptions;
 using User.Service.Domain.Interfaces;
 
@@ -17,53 +18,38 @@ public class ExceptionMiddleware
     public async Task Invoke(HttpContext context)
     {
         using var scope = context.RequestServices.CreateScope();
+        
         var loggingService = scope.ServiceProvider.GetRequiredService<ILoggingService>();
 
         try
         {
             await _next(context);
         }
-        catch (Exception excp)
+        catch (Exception ex)
         {
-            await loggingService.LogErrorAsync("An unhandled exception occurred.", excp);
+            await loggingService.LogErrorAsync("An unhandled exception occurred.", ex);
             
-            await ExceptionAsync(context, excp);
+            await ExceptionAsync(context, ex);
         }
     }
 
     private static Task ExceptionAsync(HttpContext context, Exception ex)
     {
-        HttpStatusCode statusCode;
-        string message = "Unexpected error";
-        var excpType = ex.GetType();
+        var message = "Unexpected error";
 
-        if (excpType == typeof(BadRequestException))
+        var statusCode = ex switch
         {
-            statusCode = HttpStatusCode.BadRequest;
-            message = ex.Message;
-        }
-        else if (excpType == typeof(NotFoundException))
-        {
-            statusCode = HttpStatusCode.NotFound;
-            message = ex.Message;
-        }
-        else if (excpType == typeof(AlreadyExistsException))
-        {
-            statusCode = HttpStatusCode.Conflict;
-            message = ex.Message;
-        }
-        else if (excpType == typeof(UnauthorizedException))
-        {
-            statusCode = HttpStatusCode.Unauthorized;
-            message = ex.Message;
-        }
-        else
-        {
-            statusCode = HttpStatusCode.InternalServerError;
-            message = ex.Message;
-        }
+            BadRequestException => HttpStatusCode.BadRequest,
+            NotFoundException => HttpStatusCode.NotFound,
+            AlreadyExistsException => HttpStatusCode.Conflict,
+            UnauthorizedException => HttpStatusCode.Unauthorized,
+            _ => HttpStatusCode.InternalServerError
+        };
+
+        message = ex.Message;
 
         var result = JsonSerializer.Serialize(new { message });
+        
         context.Response.ContentType = "application/json";
         context.Response.StatusCode = (int)statusCode;
 
