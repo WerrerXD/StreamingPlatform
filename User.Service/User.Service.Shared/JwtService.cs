@@ -13,8 +13,9 @@ namespace User.Service.Shared;
 
 public class JwtService : IJwtService
 {
-    private readonly JwtOptions _jwtOptions;
     private const int RefreshTokenByteLength = 64;
+    
+    private readonly JwtOptions _jwtOptions;
 
     public JwtService(IOptions<JwtOptions> jwtOptions)
     {
