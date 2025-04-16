@@ -19,9 +19,9 @@ public class ReportUserUseCase : IReportUserUseCase
         _userRepository = userRepository;
     }
     
-    public async Task ExecuteAsync(ReportUserRequest request, CancellationToken cancellationToken)
+    public async Task ExecuteAsync(Guid reporterId, ReportUserRequest request, CancellationToken cancellationToken)
     {
-        if (!await _userRepository.IsExistByIdAsync(request.ReporterId, cancellationToken))
+        if (!await _userRepository.IsExistByIdAsync(reporterId, cancellationToken))
         {
             throw new NotFoundException("User is not found");
         }
@@ -33,7 +33,7 @@ public class ReportUserUseCase : IReportUserUseCase
 
         Report reportModel = new()
         {
-            ReporterId = request.ReporterId,
+            ReporterId = reporterId,
             ReportedId = request.ReportedId,
             Reason = request.Reason,
             Status = ReportStatus.Pending.ToString()

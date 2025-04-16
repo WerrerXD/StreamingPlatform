@@ -4,5 +4,5 @@ namespace User.Service.Application.UseCases.ReportUseCases.ReportUseCasesInterfa
 
 public interface IReportUserUseCase
 {
-    Task ExecuteAsync(ReportUserRequest request, CancellationToken cancellationToken);
+    Task ExecuteAsync(Guid reporterId, ReportUserRequest request, CancellationToken cancellationToken);
 }

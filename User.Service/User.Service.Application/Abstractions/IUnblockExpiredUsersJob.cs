@@ -1,6 +1,6 @@
 namespace User.Service.Application.Abstractions;
 
-public interface IUnblockExpiredUsersService
+public interface IUnblockExpiredUsersJob
 {
     Task UnblockExpiredUsersAsync(CancellationToken cancellationToken);
 }

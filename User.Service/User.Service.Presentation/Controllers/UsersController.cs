@@ -57,7 +57,7 @@ public class UsersController : ControllerBase
     }
     
     [HttpPost]
-    public async Task<IActionResult> Register([FromBody]RegisterUserRequest request, CancellationToken cancellationToken)
+    public async Task<IActionResult> Register([FromBody] RegisterUserRequest request, CancellationToken cancellationToken)
     {
         await _registerUserUseCase.ExecuteAsync(request, cancellationToken);
 
@@ -66,23 +66,23 @@ public class UsersController : ControllerBase
     
     [Authorize(Roles = "Admin")]
     [HttpPost("{userId:guid}/roles/admin")]
-    public async Task<IActionResult> AddAdminRoleToUser([FromRoute]Guid userId, CancellationToken cancellationToken)
+    public async Task<IActionResult> AddAdminRoleToUser([FromRoute] Guid userId, CancellationToken cancellationToken)
     {
         await _addAdminUseCase.ExecuteAsync(userId, cancellationToken);
         
         return Ok(userId);
     }
     
-    [HttpPost("tokens")]
-    public async Task<IActionResult> Login([FromBody]LoginUserRequest request, CancellationToken cancellationToken)
+    [HttpPost("me/tokens")]
+    public async Task<IActionResult> Login([FromBody] LoginUserRequest request, CancellationToken cancellationToken)
     {
         var (accessToken, refreshToken) = await _loginUserUseCase.ExecuteAsync(request.Email, request.Password, cancellationToken);
         
         return Ok(new { AccessToken = accessToken, RefreshToken = refreshToken });
     }
     
-    [HttpPut("tokens")]
-    public async Task<IActionResult> RefreshToken([FromQuery]string refreshToken, CancellationToken cancellationToken)
+    [HttpPut("me/tokens")]
+    public async Task<IActionResult> RefreshToken([FromQuery] string refreshToken, CancellationToken cancellationToken)
     {
         var (newAccessToken, newRefreshToken) = await _refreshTokenUseCase.ExecuteAsync(refreshToken, cancellationToken);
         
@@ -90,7 +90,7 @@ public class UsersController : ControllerBase
     }
     
     [Authorize]
-    [HttpDelete("tokens")]
+    [HttpDelete("me/tokens")]
     public async Task<IActionResult> LogOut(CancellationToken cancellationToken)
     {
         var userId = HttpContext.GetUserId();
@@ -103,7 +103,7 @@ public class UsersController : ControllerBase
 
     [Authorize]
     [HttpPost("{followeeId:guid}/followers")]
-    public async Task<IActionResult> FollowUser([FromRoute]Guid followeeId, CancellationToken cancellationToken)
+    public async Task<IActionResult> FollowUser([FromRoute] Guid followeeId, CancellationToken cancellationToken)
     {
         var followerId = HttpContext.GetUserId();
         
@@ -114,7 +114,7 @@ public class UsersController : ControllerBase
     
     [Authorize]
     [HttpDelete("{followeeId:guid}/followers")]
-    public async Task<IActionResult> UnfollowUser([FromRoute]Guid followeeId, CancellationToken cancellationToken)
+    public async Task<IActionResult> UnfollowUser([FromRoute] Guid followeeId, CancellationToken cancellationToken)
     {
         var followerId = HttpContext.GetUserId();
         
@@ -125,7 +125,7 @@ public class UsersController : ControllerBase
     
     [Authorize(Roles = "Admin")]
     [HttpPost("{userId:guid}/blocks")]
-    public async Task<IActionResult> BlockUser([FromRoute]Guid userId, [FromQuery]int daysBanned, CancellationToken cancellationToken)
+    public async Task<IActionResult> BlockUser([FromRoute] Guid userId, [FromQuery] int daysBanned, CancellationToken cancellationToken)
     {
         await _blockUserUseCase.ExecuteAsync(userId, daysBanned, cancellationToken);
         
@@ -134,11 +134,11 @@ public class UsersController : ControllerBase
     
     [Authorize]
     [HttpPatch("me/profile")]
-    public async Task<IActionResult> ChangeUserProfile([FromForm]ChangeUserProfileRequest request, CancellationToken cancellationToken)
+    public async Task<IActionResult> ChangeUserProfile([FromForm] ChangeUserProfileRequest request, CancellationToken cancellationToken)
     {
         var userId = HttpContext.GetUserId();
         
-        await _changeUserProfile.ExecuteAsync(userId, request.Username, request.Description, request.AvatarPhoto, cancellationToken);
+        await _changeUserProfile.ExecuteAsync(userId, request, cancellationToken);
         
         return Ok();
     }

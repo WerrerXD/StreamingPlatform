@@ -1,6 +1,6 @@
 namespace User.Service.Application.Abstractions;
 
-public interface IDeleteExpiredTokensService
+public interface IDeleteExpiredTokensJob
 {
     Task DeleteExpiredTokensAsync(CancellationToken cancellationToken);
 }

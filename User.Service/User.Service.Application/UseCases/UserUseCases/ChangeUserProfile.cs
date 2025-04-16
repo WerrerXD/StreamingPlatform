@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Http;
 using User.Service.Application.Abstractions;
+using User.Service.Application.Contracts;
 using User.Service.Application.Exceptions;
+using User.Service.Application.UseCases.UserUseCases.UserUseCasesInterfaces;
 using User.Service.Domain.Interfaces;
 
 namespace User.Service.Application.UseCases.UserUseCases;
@@ -16,33 +18,33 @@ public class ChangeUserProfile : IChangeUserProfile
         _fileStorageService = fileStorageService;
     }
     
-    public async Task ExecuteAsync(Guid userId, string? userName, string? description, IFormFile? avatarPhoto, CancellationToken cancellationToken)
+    public async Task ExecuteAsync(Guid userId, ChangeUserProfileRequest request, CancellationToken cancellationToken)
     {
         var user = await _userRepository.GetByIdAsync(userId, cancellationToken)
             ?? throw new NotFoundException("User does not exist");
         
-        if (avatarPhoto != null)
+        if (request.AvatarPhoto != null)
         {
-            var coverUrl = await _fileStorageService.SaveFileAsync(avatarPhoto, "users-avatars");
+            var coverUrl = await _fileStorageService.SaveFileAsync(request.AvatarPhoto, "users-avatars");
             
             user.AvatarUrl = coverUrl;
         }
 
-        if (!string.IsNullOrEmpty(userName))
+        if (!string.IsNullOrEmpty(request.Username))
         {
-            var existingUser = await _userRepository.GetByUsernameAsync(userName, cancellationToken);
+            var existingUser = await _userRepository.GetByUsernameAsync(request.Username, cancellationToken);
             
             if (existingUser != null)
             {
                 throw new AlreadyExistsException("User with this username already exists"); 
             }
             
-            user.UserName = userName;
+            user.UserName = request.Username;
         }
         
-        if (!string.IsNullOrEmpty(description))
+        if (!string.IsNullOrEmpty(request.Description))
         {
-            user.Description = description;
+            user.Description = request.Description;
         }
         
         await _userRepository.UpdateAsync(user, cancellationToken);

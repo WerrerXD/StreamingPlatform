@@ -32,7 +32,7 @@ public class LoginUserUseCase : ILoginUserUseCase
         
         var isAuthenticationSuccessful = user is not null && isPasswordValid;
 
-        if (isAuthenticationSuccessful == false)
+        if (!isAuthenticationSuccessful)
         {
             throw new UnauthorizedException("Invalid data");
         }

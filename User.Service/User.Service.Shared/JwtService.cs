@@ -14,6 +14,7 @@ namespace User.Service.Shared;
 public class JwtService : IJwtService
 {
     private readonly JwtOptions _jwtOptions;
+    private const int RefreshTokenByteLength = 64;
 
     public JwtService(IOptions<JwtOptions> jwtOptions)
     {
@@ -45,8 +46,7 @@ public class JwtService : IJwtService
         var accessTokenHandler = new JwtSecurityTokenHandler();
         var accessToken = accessTokenHandler.WriteToken(accessTokenHandler.CreateToken(accessTokenDescriptor));
         
-        const int bytesCount = 64;
-        var refreshToken = Convert.ToBase64String(RandomNumberGenerator.GetBytes(bytesCount));
+        var refreshToken = Convert.ToBase64String(RandomNumberGenerator.GetBytes(RefreshTokenByteLength));
 
         return (accessToken, refreshToken);
     }

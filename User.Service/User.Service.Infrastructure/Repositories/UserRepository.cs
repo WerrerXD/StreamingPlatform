@@ -4,7 +4,7 @@ using User.Service.Domain.Interfaces;
 
 namespace User.Service.Infrastructure.Repositories;
 
-public class UserRepository: Repository<AppUser>,IUserRepository
+public class UserRepository: Repository<AppUser>, IUserRepository
 {
     public UserRepository(ApplicationDbContext context)
         :base(context)
@@ -12,6 +12,13 @@ public class UserRepository: Repository<AppUser>,IUserRepository
     }
     
     public async Task<AppUser> GetByIdAsync(Guid id, CancellationToken cancellationToken)
+    {
+        return await _context.Users
+            .AsNoTracking()
+            .FirstOrDefaultAsync(u => u.Id == id, cancellationToken);
+    }
+    
+    public async Task<AppUser> GetByIdWithRolesAsync(Guid id, CancellationToken cancellationToken)
     {
         return await _context.Users
             .AsNoTracking()
@@ -44,6 +51,14 @@ public class UserRepository: Repository<AppUser>,IUserRepository
             .FirstOrDefaultAsync(u => u.UserName == username, cancellationToken);
 
         return user;
+    }
+
+    public async Task<List<AppUser>> GetAllExpiredUsers(CancellationToken cancellationToken)
+    {
+        return await _context.Users
+            .Where(u => u.BlockedUntil < DateTime.UtcNow && u.IsBlocked)
+            .AsNoTracking()
+            .ToListAsync(cancellationToken);
     }
     
     public async Task<bool> IsFollowingUserAsync(Guid followerId, Guid followeeId, CancellationToken cancellationToken)

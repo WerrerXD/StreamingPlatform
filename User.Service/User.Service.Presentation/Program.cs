@@ -50,8 +50,8 @@ builder.Services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
 builder.Services.AddScoped<IPasswordHasher, PasswordHasher>();
 builder.Services.AddScoped<IJwtService, JwtService>();
 builder.Services.AddScoped<IFileStorageService, FileStorageService>();
-builder.Services.AddScoped<IDeleteExpiredTokensService, DeleteExpiredTokensService>();
-builder.Services.AddScoped<IUnblockExpiredUsersService, UnblockExpiredUsersService>();
+builder.Services.AddScoped<IDeleteExpiredTokensJob, DeleteExpiredTokensJob>();
+builder.Services.AddScoped<IUnblockExpiredUsersJob, UnblockExpiredUsersJob>();
 
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddScoped<IUserRepository, UserRepository>();
@@ -82,12 +82,12 @@ using (var scope = app.Services.CreateScope())
 
 app.UseHangfireDashboard("/hangfire");
 
-RecurringJob.AddOrUpdate<IDeleteExpiredTokensService>(
+RecurringJob.AddOrUpdate<IDeleteExpiredTokensJob>(
     "CleanupExpiredTokens",
     service => service.DeleteExpiredTokensAsync(default),
     Cron.Daily);
 
-RecurringJob.AddOrUpdate<IUnblockExpiredUsersService>(
+RecurringJob.AddOrUpdate<IUnblockExpiredUsersJob>(
     "UnblockExpiredUsers",
     service => service.UnblockExpiredUsersAsync(default),
     Cron.Hourly);

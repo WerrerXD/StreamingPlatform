@@ -3,11 +3,11 @@ using User.Service.Domain.Interfaces;
 
 namespace User.Service.Application.Services;
 
-public class DeleteExpiredTokensService : IDeleteExpiredTokensService
+public class DeleteExpiredTokensJob : IDeleteExpiredTokensJob
 {
     private readonly IRefreshTokenRepository _refreshTokenRepository;
 
-    public DeleteExpiredTokensService(IRefreshTokenRepository refreshTokenRepository)
+    public DeleteExpiredTokensJob(IRefreshTokenRepository refreshTokenRepository)
     {
         _refreshTokenRepository = refreshTokenRepository;
     }

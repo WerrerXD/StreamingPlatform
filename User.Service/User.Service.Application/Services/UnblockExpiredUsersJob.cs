@@ -3,22 +3,18 @@ using User.Service.Domain.Interfaces;
 
 namespace User.Service.Application.Services;
 
-public class UnblockExpiredUsersService : IUnblockExpiredUsersService
+public class UnblockExpiredUsersJob : IUnblockExpiredUsersJob
 {
     private readonly IUserRepository _userRepository;
 
-    public UnblockExpiredUsersService(IUserRepository userRepository)
+    public UnblockExpiredUsersJob(IUserRepository userRepository)
     {
         _userRepository = userRepository;
     }
 
     public async Task UnblockExpiredUsersAsync(CancellationToken cancellationToken)
     {
-        var users = await _userRepository.GetAllAsync(cancellationToken);
-        
-        var expiredUsers = users
-            .Where(u => u.BlockedUntil < DateTime.UtcNow && u.IsBlocked)
-            .ToList();
+        var expiredUsers = await _userRepository.GetAllExpiredUsers(cancellationToken);
         
         expiredUsers.ForEach(u => u.IsBlocked = false);
         

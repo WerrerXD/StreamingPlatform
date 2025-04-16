@@ -29,19 +29,12 @@ public class ReportsController: ControllerBase
     }
 
     [Authorize]
-    [HttpPost("{reportedId:guid}")]
-    public async Task<IActionResult> ReportUser([FromRoute]Guid reportedId, [FromQuery]string reason, CancellationToken cancellationToken)
+    [HttpPost]
+    public async Task<IActionResult> ReportUser([FromBody] ReportUserRequest request, CancellationToken cancellationToken)
     {
         var reporterId = HttpContext.GetUserId();
-
-        var reportUserDto = new ReportUserRequest
-        {
-            ReporterId = reporterId,
-            ReportedId = reportedId,
-            Reason = reason
-        };
         
-        await _reportUserUseCase.ExecuteAsync(reportUserDto, cancellationToken);
+        await _reportUserUseCase.ExecuteAsync(reporterId, request, cancellationToken);
         
         return Ok();
     }
@@ -59,7 +52,7 @@ public class ReportsController: ControllerBase
     
     [Authorize(Roles = "Admin")]
     [HttpPut("{reportId:guid}/approval")]
-    public async Task<IActionResult> ApproveReportAndBlockUser([FromRoute]Guid reportId, [FromQuery]int daysBanned, CancellationToken cancellationToken)
+    public async Task<IActionResult> ApproveReportAndBlockUser([FromRoute] Guid reportId, [FromQuery] int daysBanned, CancellationToken cancellationToken)
     {
         await _approveReportAndBanUserUseCase.ExecuteAsync(reportId, daysBanned, cancellationToken);
         
@@ -68,7 +61,7 @@ public class ReportsController: ControllerBase
     
     [Authorize(Roles = "Admin")]
     [HttpPut("{reportId:guid}/rejection")]
-    public async Task<IActionResult> RejectReport([FromRoute]Guid reportId, CancellationToken cancellationToken)
+    public async Task<IActionResult> RejectReport([FromRoute] Guid reportId, CancellationToken cancellationToken)
     {
         await _declineReportUseCase.ExecuteAsync(reportId, cancellationToken);
         

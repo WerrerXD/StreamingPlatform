@@ -17,7 +17,7 @@ public class AddAdminUseCase : IAddAdminUseCase
     
     public async Task ExecuteAsync(Guid userId, CancellationToken cancellationToken)
     {
-        var user = await _userRepository.GetByIdAsync(userId, cancellationToken)
+        var user = await _userRepository.GetByIdWithRolesAsync(userId, cancellationToken)
             ?? throw new NotFoundException("User does not exist");
         
         var adminRole = await _userRepository.GetRoleByNameAsync(UserRole.Admin.ToString(), cancellationToken);
