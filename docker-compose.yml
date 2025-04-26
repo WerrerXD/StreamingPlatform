@@ -30,8 +30,8 @@ services:
       - MongoDbSettings__DatabaseName=StreamDb
     depends_on:
       - mongodb
-      - rabbitmq
-      - redis
+      - logstash
+      - kibana
 
   # Микросервис Notification.Service
   notification-service:

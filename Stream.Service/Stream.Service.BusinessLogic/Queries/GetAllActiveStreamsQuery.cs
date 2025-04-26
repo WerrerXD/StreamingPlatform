@@ -4,4 +4,4 @@ using Stream.Service.Domain.Models;
 namespace Stream.Service.BusinessLogic.Queries;
 
 public record GetAllActiveStreamsQuery()
-    :IRequest<List<StreamModel>>;
+    : IRequest<List<StreamModel>>;

@@ -1,5 +1,6 @@
 using AutoMapper;
 using MediatR;
+using Stream.Service.BusinessLogic.Abstractions;
 using Stream.Service.BusinessLogic.Commands;
 using Stream.Service.BusinessLogic.Exceptions;
 using Stream.Service.Domain.Interfaces;
@@ -34,7 +35,7 @@ public class CreateChatMessageHandler : IRequestHandler<CreateChatMessageCommand
         
         var message = _mapper.Map<ChatMessage>(request);
         
-        await _chatRepository.AddMessageAsync(message, cancellationToken);
+        await _chatRepository.CreateAsync(message, cancellationToken);
         
         await _notificationService.SendMessageToGroupAsync(request.StreamId, message);
     }

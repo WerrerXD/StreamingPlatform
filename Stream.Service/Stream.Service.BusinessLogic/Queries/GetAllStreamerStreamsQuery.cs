@@ -5,5 +5,4 @@ namespace Stream.Service.BusinessLogic.Queries;
 
 public record GetAllStreamerStreamsQuery(
     string StreamerId
-    )
-    :IRequest<List<StreamModel>>;
+    ) : IRequest<List<StreamModel>>;

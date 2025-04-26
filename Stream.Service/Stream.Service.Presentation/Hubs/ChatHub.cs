@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.SignalR;
+using Stream.Service.BusinessLogic.Abstractions;
 using Stream.Service.Domain.Interfaces;
 using Stream.Service.Domain.Models;
 

@@ -7,10 +7,10 @@ public class ChatMessage
 {
     [BsonId]
     [BsonRepresentation(BsonType.ObjectId)]
-    public string Id { get; set; } = null!;
+    public string Id { get; set; } 
 
-    public string StreamId { get; set; } = null!;
-    public string UserId { get; set; } = null!;
-    public string Message { get; set; } = null!;
+    public string StreamId { get; set; } 
+    public string UserId { get; set; } 
+    public string Message { get; set; } 
     public DateTime Timestamp { get; set; } = DateTime.UtcNow;
 }

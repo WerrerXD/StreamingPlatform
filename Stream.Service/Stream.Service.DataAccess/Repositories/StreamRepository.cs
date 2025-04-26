@@ -8,22 +8,13 @@ using System.Threading.Tasks;
 
 namespace Stream.Service.DataAccess.Repositories;
 
-public class StreamRepository : IStreamRepository
+public class StreamRepository : Repository<StreamModel>, IStreamRepository
 {
-    private readonly IMongoCollection<StreamModel> _collection;
-
-    public StreamRepository(IMongoClient mongoClient, IOptions<DatabaseSettings> settings)
+    public StreamRepository(IMongoClient mongoClient, IOptions<DatabaseSettings> settings) 
+        : base(mongoClient, settings, "streams")
     {
-        var database = mongoClient.GetDatabase(settings.Value.DatabaseName);
-        _collection = database.GetCollection<StreamModel>("streams");
     }
-
-    public async Task<string> CreateAsync(StreamModel stream, CancellationToken cancellationToken)
-    {
-        await _collection.InsertOneAsync(stream, cancellationToken: cancellationToken);
-        return stream.Id;
-    }
-
+    
     public async Task<StreamModel?> GetByIdAsync(string id, CancellationToken cancellationToken)
     {
         return await _collection
@@ -37,53 +28,9 @@ public class StreamRepository : IStreamRepository
             .Find(s => s.StreamerId == streamerId)
             .ToListAsync(cancellationToken);
     }
-
-    public async Task EndStreamAsync(string streamId, CancellationToken cancellationToken)
-    {
-        var update = Builders<StreamModel>.Update.Set(s => s.EndTime, DateTime.UtcNow);
-        
-        await _collection.UpdateOneAsync(
-            s => s.Id == streamId,
-            update,
-            cancellationToken: cancellationToken
-        );
-    }
     
     public async Task<List<StreamModel>> GetAllActiveAsync(CancellationToken cancellationToken)
     {
         return await _collection.Find(s => s.EndTime == null).ToListAsync(cancellationToken);
-    }
-
-    public async Task UpdateTitleAsync(string title, string streamId, CancellationToken cancellationToken)
-    {
-        var update = Builders<StreamModel>.Update.Set(s => s.Title, title);
-        
-        await _collection.UpdateOneAsync(
-            s => s.Id == streamId,
-            update,
-            cancellationToken: cancellationToken
-        );
-    }
-    
-    public async Task UpdateDescriptionAsync(string description, string streamId, CancellationToken cancellationToken)
-    {
-        var update = Builders<StreamModel>.Update.Set(s => s.Description, description);
-        
-        await _collection.UpdateOneAsync(
-            s => s.Id == streamId,
-            update,
-            cancellationToken: cancellationToken
-        );
-    }
-    
-    public async Task UpdateCategoryAsync(string categoryId, string streamId, CancellationToken cancellationToken)
-    {
-        var update = Builders<StreamModel>.Update.Set(s => s.CategoryId, categoryId);
-        
-        await _collection.UpdateOneAsync(
-            s => s.Id == streamId,
-            update,
-            cancellationToken: cancellationToken
-        );
     }
 }

@@ -7,5 +7,4 @@ public record ChangeStreamCommand(
     string? StreamName,
     string? StreamDescription,
     string? CategoryId
-    )
-    : IRequest;
+    ) : IRequest;

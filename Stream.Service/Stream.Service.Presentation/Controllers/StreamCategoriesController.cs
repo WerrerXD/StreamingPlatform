@@ -19,14 +19,16 @@ public class StreamCategoriesController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> CreateStreamCategory([FromBody] CreateStreamCategoryCommand command, CancellationToken cancellationToken)
     {
-        var streamCategoryId = await _mediator.Send(command, cancellationToken);
-        return Ok(new { id = streamCategoryId });
+        await _mediator.Send(command, cancellationToken);
+        
+        return Ok();
     }
     
     [HttpGet]
     public async Task<IActionResult> GetAllStreamCategories(CancellationToken cancellationToken)
     {
         var streamCategories = await _mediator.Send(new GetAllStreamCategoriesQuery(), cancellationToken);
+        
         return Ok(streamCategories);
     }
     
@@ -34,6 +36,7 @@ public class StreamCategoriesController : ControllerBase
     public async Task<IActionResult> ChangeStreamCategory([FromForm] ChangeStreamCategoryCommand command, CancellationToken cancellationToken)
     {
         await _mediator.Send(command, cancellationToken);
+        
         return Ok();
     }
     
@@ -41,7 +44,7 @@ public class StreamCategoriesController : ControllerBase
     public async Task<IActionResult> DeleteStreamCategory([FromForm] DeleteStreamCategoryCommand command, CancellationToken cancellationToken)
     {
         await _mediator.Send(command, cancellationToken);
+        
         return Ok();
     }
-    
 }

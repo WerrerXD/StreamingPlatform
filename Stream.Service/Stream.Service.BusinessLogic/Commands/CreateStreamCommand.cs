@@ -7,4 +7,4 @@ public record CreateStreamCommand(
     string Title,
     string Description,
     string CategoryId
-) : IRequest<string>;
+    ) : IRequest;

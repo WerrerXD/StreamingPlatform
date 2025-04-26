@@ -19,6 +19,7 @@ public class GetStreamByIdHandler: IRequestHandler<GetStreamByIdQuery, StreamMod
     {
         var stream = await _repository.GetByIdAsync(request.StreamId, cancellationToken)
             ?? throw new NotFoundException("Stream does not exist");
+        
         return stream;
     }
 }

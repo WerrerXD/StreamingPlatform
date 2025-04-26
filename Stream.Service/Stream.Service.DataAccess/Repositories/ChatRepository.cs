@@ -6,14 +6,11 @@ using Stream.Service.Domain.Settings;
 
 namespace Stream.Service.DataAccess.Repositories;
 
-public class ChatRepository : IChatRepository
+public class ChatRepository : Repository<ChatMessage>, IChatRepository
 {
-    private readonly IMongoCollection<ChatMessage> _collection;
-
-    public ChatRepository(IMongoClient mongoClient, IOptions<DatabaseSettings> settings)
+    public ChatRepository(IMongoClient mongoClient, IOptions<DatabaseSettings> settings) 
+        : base(mongoClient, settings, "chat_messages")
     {
-        var database = mongoClient.GetDatabase(settings.Value.DatabaseName);
-        _collection = database.GetCollection<ChatMessage>("chat_messages");
     }
 
     public async Task<List<ChatMessage>> GetMessagesByStreamIdAsync(string streamId, CancellationToken cancellationToken)
@@ -21,10 +18,5 @@ public class ChatRepository : IChatRepository
         return await _collection.Find(m => m.StreamId == streamId)
             .SortByDescending(m => m.Timestamp)
             .ToListAsync(cancellationToken);
-    }
-
-    public async Task AddMessageAsync(ChatMessage message, CancellationToken cancellationToken)
-    {
-        await _collection.InsertOneAsync(message, cancellationToken: cancellationToken);
     }
 }

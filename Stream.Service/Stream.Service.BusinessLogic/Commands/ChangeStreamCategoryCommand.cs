@@ -6,4 +6,4 @@ public record ChangeStreamCategoryCommand(
     string Id,
     string? Name,
     string? Description
-    ): IRequest;
+    ) : IRequest;

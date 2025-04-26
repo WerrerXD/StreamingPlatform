@@ -1,4 +1,5 @@
 using MediatR;
+using Stream.Service.BusinessLogic.Abstractions;
 using Stream.Service.BusinessLogic.Commands;
 using Stream.Service.BusinessLogic.Exceptions;
 using Stream.Service.Domain.Interfaces;
@@ -9,11 +10,13 @@ public class ChangeStreamHandler: IRequestHandler<ChangeStreamCommand>
 {
     private readonly IStreamRepository _repository;
     private readonly IStreamCategoryRepository _categoryRepository;
+    private readonly ILoggingService _loggingService;
 
-    public ChangeStreamHandler(IStreamRepository repository, IStreamCategoryRepository categoryRepository)
+    public ChangeStreamHandler(IStreamRepository repository, IStreamCategoryRepository categoryRepository, ILoggingService loggingService)
     {
         _repository = repository;
         _categoryRepository = categoryRepository;
+        _loggingService = loggingService;
     }
 
 
@@ -29,19 +32,24 @@ public class ChangeStreamHandler: IRequestHandler<ChangeStreamCommand>
         
         if (!string.IsNullOrEmpty(request.StreamName))
         {
-            await _repository.UpdateTitleAsync(request.StreamName, request.StreamId, cancellationToken);
+            stream.Title = request.StreamName;
         }
 
         if (!string.IsNullOrEmpty(request.StreamDescription))
         {
-            await _repository.UpdateDescriptionAsync(request.StreamDescription, request.StreamId, cancellationToken);
+            stream.Description = request.StreamDescription;
         }
         
         if (!string.IsNullOrEmpty(request.CategoryId))
         {
-            var categoryExists = await _categoryRepository.GetStreamCategoryById(request.CategoryId, cancellationToken) 
-                                 ?? throw new NotFoundException("Category with this id does not exist");
-            await _repository.UpdateCategoryAsync(request.CategoryId, request.StreamId, cancellationToken);
+            var category = await _categoryRepository.GetStreamCategoryByIdAsync(request.CategoryId, cancellationToken) 
+                ?? throw new NotFoundException("Category with this id does not exist");
+            
+            stream.CategoryId = request.CategoryId;
         }
+        
+        await _repository.UpdateAsync(stream, cancellationToken);
+        
+        await _loggingService.LogInformationAsync($"Stream with id: {stream.Id} was successfully updated");
     }
 }

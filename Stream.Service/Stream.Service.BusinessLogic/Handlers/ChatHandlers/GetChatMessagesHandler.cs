@@ -21,6 +21,7 @@ public class GetChatMessagesHandler : IRequestHandler<GetChatMessagesQuery, List
     {
         var stream = await _streamRepository.GetByIdAsync(request.StreamId, cancellationToken)
                      ?? throw new NotFoundException("Stream does not exist");
+        
         return await _chatRepository.GetMessagesByStreamIdAsync(request.StreamId, cancellationToken);
     }
 }
