@@ -16,6 +16,7 @@ services:
       - redis
       - logstash
       - kibana
+      - rabbitmq
 
   # Микросервис Stream.Service
   stream-service:
@@ -32,6 +33,7 @@ services:
       - mongodb
       - logstash
       - kibana
+      - rabbitmq
 
   # Микросервис Notification.Service
   notification-service:

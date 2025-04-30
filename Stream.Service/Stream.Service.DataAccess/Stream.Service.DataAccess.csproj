@@ -8,14 +8,23 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Stream.Service.BusinessLogic\Stream.Service.BusinessLogic.csproj" />
+<<<<<<< HEAD
+      <ProjectReference Include="..\Stream.Service.BusinessLogic\Stream.Service.BusinessLogic.csproj" />
+=======
+      <ProjectReference Include="..\..\User.Service\User.Service.Application\User.Service.Application.csproj" />
+>>>>>>> 58c9870 (First changes)
       <ProjectReference Include="..\Stream.Service.Domain\Stream.Service.Domain.csproj" />
     </ItemGroup>
 
     <ItemGroup>
       <PackageReference Include="Elastic.Clients.Elasticsearch" Version="8.15.10" />
       <PackageReference Include="Microsoft.AspNetCore.SignalR.Core" Version="1.2.0" />
+      <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.1" />
       <PackageReference Include="Microsoft.Extensions.Options" Version="8.0.2" />
       <PackageReference Include="MongoDB.Driver" Version="3.3.0" />
+      <PackageReference Include="RabbitMQ.Client" Version="6.8.1" />
+      <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.1" />
+      <PackageReference Include="RabbitMQ.Client" Version="6.8.1" />
     </ItemGroup>
 
 </Project>

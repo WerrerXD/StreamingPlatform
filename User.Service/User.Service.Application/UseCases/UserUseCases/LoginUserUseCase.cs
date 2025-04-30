@@ -1,4 +1,5 @@
 using User.Service.Application.Abstractions;
+using User.Service.Application.Contracts;
 using User.Service.Application.Exceptions;
 using User.Service.Application.UseCases.UserUseCases.UserUseCasesInterfaces;
 using User.Service.Domain.Entities;
@@ -13,15 +14,17 @@ public class LoginUserUseCase : ILoginUserUseCase
     private readonly IPasswordHasher _passwordHasher;
     private readonly IUserRepository _userRepository;
     private readonly IRefreshTokenRepository _refreshTokenRepository;
+    private readonly IEventBus _eventBus;
 
 
     public LoginUserUseCase(IJwtService jwtService, IPasswordHasher passwordHasher, IUserRepository userRepository,
-        IRefreshTokenRepository refreshTokenRepository)
+        IRefreshTokenRepository refreshTokenRepository, IEventBus eventBus)
     {
         _jwtService = jwtService;
         _passwordHasher = passwordHasher;
         _userRepository = userRepository;
         _refreshTokenRepository = refreshTokenRepository;
+        _eventBus = eventBus;
     }
 
     public async Task<(string AccessToken, string RefreshToken)> ExecuteAsync(string email, string password, CancellationToken cancellationToken)
@@ -52,6 +55,11 @@ public class LoginUserUseCase : ILoginUserUseCase
         };
 
         await _refreshTokenRepository.CreateAsync(refreshTokenModel, cancellationToken);
+        
+        var userLoggedInEvent = new UserLoggedInEvent(user.Id);
+        _eventBus.Publish(userLoggedInEvent, "user.logged-in");
+
+        Console.WriteLine($"[User Service] Sent UserLoggedIn event for user: {user.Id}");
 
         return (jwtToken, refreshToken);
     }

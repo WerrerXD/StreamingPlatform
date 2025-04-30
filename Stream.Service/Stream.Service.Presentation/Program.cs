@@ -9,6 +9,7 @@ using Stream.Service.BusinessLogic.Mappings;
 using Stream.Service.BusinessLogic.Services;
 using Stream.Service.BusinessLogic.Validators;
 using Stream.Service.DataAccess;
+using Stream.Service.DataAccess.Messaging;
 using Stream.Service.DataAccess.Configuration;
 using Stream.Service.DataAccess.Repositories;
 using Stream.Service.DataAccess.Settings;
@@ -30,6 +31,9 @@ MongoConfig.Configure();
 
 builder.Services.AddControllers()
     .AddFluentValidation(fv => fv.RegisterValidatorsFromAssembly(typeof(CreateStreamCommandValidator).Assembly));
+
+builder.Services.AddSingleton<RabbitMqEventConsumer>();
+builder.Services.AddHostedService<RabbitMqBackgroundService>();
 
 var elasticsearchConfig = builder.Configuration.GetSection("Elasticsearch");
 

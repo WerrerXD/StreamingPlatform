@@ -9,6 +9,7 @@ using User.Service.Application.Services;
 using User.Service.Application.Validators;
 using User.Service.Domain.Interfaces;
 using User.Service.Infrastructure;
+using User.Service.Infrastructure.Messaging;
 using User.Service.Infrastructure.Repositories;
 using User.Service.Presentation.Extensions;
 using User.Service.Presentation.Middleware;
@@ -45,6 +46,8 @@ builder.Services.AddSingleton<IElasticsearchService, ElasticsearchService>(sp =>
     new ElasticsearchService("http://elasticsearch:9200"));
 
 builder.Services.AddScoped<ILoggingService, LoggingService>();
+
+builder.Services.AddSingleton<IEventBus, RabbitMqEventBus>();
 
 builder.Services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
 builder.Services.AddScoped<IPasswordHasher, PasswordHasher>();
