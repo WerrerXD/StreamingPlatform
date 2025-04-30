@@ -1,4 +1,4 @@
-using Stream.Service.Domain.Interfaces;
+using Stream.Service.BusinessLogic.Abstractions;
 
 namespace Stream.Service.DataAccess;
 

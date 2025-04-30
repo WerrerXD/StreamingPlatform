@@ -1,8 +1,8 @@
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
+using Stream.Service.DataAccess.Settings;
 using Stream.Service.Domain.Models;
 using Stream.Service.Domain.Interfaces;
-using Stream.Service.Domain.Settings;
 
 namespace Stream.Service.DataAccess.Repositories;
 

@@ -9,7 +9,7 @@ public class ChangeActiveDonationGoalDtoValidator : AbstractValidator<ChangeActi
     {
         RuleFor(dto => dto.Title)
             .MaximumLength(100).WithMessage("Title must not exceed 100 characters.")
-            .When(dto => !string.IsNullOrEmpty(dto.Title));
+            .When(dto => !string.IsNullOrWhiteSpace(dto.Title));
         
         RuleFor(dto => dto.TargetAmount)
             .GreaterThan(0).WithMessage("TargetAmount must be greater than 0.")

@@ -7,7 +7,7 @@ using Stream.Service.BusinessLogic.Queries;
 namespace Stream.Service.Presentation.Controllers;
 
 [ApiController]
-[Route("stream-service/donations/{streamerId}")]
+[Route("stream-service/streamers/{streamerId}")]
 public class DonationsController : ControllerBase
 {
     private readonly IMediator _mediator;

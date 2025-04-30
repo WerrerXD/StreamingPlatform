@@ -2,9 +2,9 @@ using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 using Stream.Service.Domain.Interfaces;
 using Stream.Service.Domain.Models;
-using Stream.Service.Domain.Settings;
 using System.Threading;
 using System.Threading.Tasks;
+using Stream.Service.DataAccess.Settings;
 
 namespace Stream.Service.DataAccess.Repositories;
 

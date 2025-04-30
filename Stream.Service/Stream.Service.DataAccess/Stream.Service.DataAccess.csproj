@@ -7,6 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\Stream.Service.BusinessLogic\Stream.Service.BusinessLogic.csproj" />
       <ProjectReference Include="..\Stream.Service.Domain\Stream.Service.Domain.csproj" />
     </ItemGroup>
 

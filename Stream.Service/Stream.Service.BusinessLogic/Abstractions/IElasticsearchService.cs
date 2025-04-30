@@ -1,4 +1,4 @@
-namespace Stream.Service.Domain.Interfaces;
+namespace Stream.Service.BusinessLogic.Abstractions;
 
 public interface IElasticsearchService
 {

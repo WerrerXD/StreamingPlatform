@@ -12,13 +12,13 @@ public class ChangeStreamCategoryCommandValidator : AbstractValidator<ChangeStre
             .NotEmpty().WithMessage("Id is required.")
             .Must(BeAValidObjectId).WithMessage("Id must be a valid MongoDB ObjectId.");
         
-        RuleFor(command => command.Name)
+        RuleFor(command => command.Dto.Name)
             .MaximumLength(100).WithMessage("Name must not exceed 100 characters.")
-            .When(command => !string.IsNullOrEmpty(command.Name));
+            .When(command => !string.IsNullOrWhiteSpace(command.Dto.Name));
         
-        RuleFor(command => command.Description)
+        RuleFor(command => command.Dto.Description)
             .MaximumLength(500).WithMessage("Description must not exceed 500 characters.")
-            .When(command => !string.IsNullOrEmpty(command.Description));
+            .When(command => !string.IsNullOrWhiteSpace(command.Dto.Description));
     }
     
     private bool BeAValidObjectId(string id)

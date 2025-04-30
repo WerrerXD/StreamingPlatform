@@ -1,14 +1,8 @@
-using MongoDB.Bson;
-using MongoDB.Bson.Serialization.Attributes;
-
 namespace Stream.Service.Domain.Models;
 
 public class StreamModel
 {
-    [BsonId]
-    [BsonRepresentation(BsonType.ObjectId)]
     public string Id { get; set; } 
-
     public string StreamerId { get; set; } 
     public string Title { get; set; } 
     public string Description { get; set; } 

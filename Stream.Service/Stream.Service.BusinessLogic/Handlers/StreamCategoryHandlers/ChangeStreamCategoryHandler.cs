@@ -23,21 +23,21 @@ public class ChangeStreamCategoryHandler : IRequestHandler<ChangeStreamCategoryC
         var streamCategory = await _repository.GetStreamCategoryByIdAsync(request.Id, cancellationToken)
             ?? throw new NotFoundException("Stream category does not exist");
         
-        if (!string.IsNullOrEmpty(request.Name))
+        if (!string.IsNullOrWhiteSpace(request.Dto.Name))
         {
-            var testStreamCategory = await _repository.GetStreamCategoryByNameAsync(request.Name, cancellationToken);
+            var streamCategoryByName = await _repository.GetStreamCategoryByNameAsync(request.Dto.Name, cancellationToken);
             
-            if (testStreamCategory != null)
+            if (streamCategoryByName != null)
             {
                 throw new AlreadyExistsException("Stream Category with this name already exists");
             }
             
-            streamCategory.Name = request.Name;
+            streamCategory.Name = request.Dto.Name;
         }
 
-        if (!string.IsNullOrEmpty(request.Description))
+        if (!string.IsNullOrWhiteSpace(request.Dto.Description))
         {
-            streamCategory.Description = request.Description;
+            streamCategory.Description = request.Dto.Description;
         }
         
         await _repository.UpdateAsync(streamCategory, cancellationToken);

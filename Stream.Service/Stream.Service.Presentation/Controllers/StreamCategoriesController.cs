@@ -1,6 +1,7 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Stream.Service.BusinessLogic.Commands;
+using Stream.Service.BusinessLogic.Contracts;
 using Stream.Service.BusinessLogic.Queries;
 
 namespace Stream.Service.Presentation.Controllers;
@@ -32,17 +33,21 @@ public class StreamCategoriesController : ControllerBase
         return Ok(streamCategories);
     }
     
-    [HttpPut]
-    public async Task<IActionResult> ChangeStreamCategory([FromForm] ChangeStreamCategoryCommand command, CancellationToken cancellationToken)
+    [HttpPut("{streamCategoryId}")]
+    public async Task<IActionResult> ChangeStreamCategory([FromRoute] string streamCategoryId, [FromForm] ChangeStreamCategoryDto commandDto, CancellationToken cancellationToken)
     {
+        var command = new ChangeStreamCategoryCommand(streamCategoryId, commandDto);
+        
         await _mediator.Send(command, cancellationToken);
         
         return Ok();
     }
     
-    [HttpDelete]
-    public async Task<IActionResult> DeleteStreamCategory([FromForm] DeleteStreamCategoryCommand command, CancellationToken cancellationToken)
+    [HttpDelete("{streamCategoryId}")]
+    public async Task<IActionResult> DeleteStreamCategory([FromRoute] string streamCategoryId, CancellationToken cancellationToken)
     {
+        var command = new DeleteStreamCategoryCommand(streamCategoryId);
+        
         await _mediator.Send(command, cancellationToken);
         
         return Ok();

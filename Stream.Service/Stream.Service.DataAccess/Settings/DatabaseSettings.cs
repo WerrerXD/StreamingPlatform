@@ -1,4 +1,4 @@
-namespace Stream.Service.Domain.Settings;
+namespace Stream.Service.DataAccess.Settings;
 
 public class DatabaseSettings
 {

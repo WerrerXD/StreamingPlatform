@@ -22,7 +22,7 @@ public class ChangeActiveDonationGoalHandler: IRequestHandler<ChangeActiveDonati
         var donationGoal = await _donationGoalRepository.GetActiveDonationGoalByStreamerIdAsync(request.StreamerId, cancellationToken)
             ?? throw new NotFoundException("No active donation goal was found");
         
-        if (!string.IsNullOrEmpty(request.Dto.Title))
+        if (!string.IsNullOrWhiteSpace(request.Dto.Title))
         {
             donationGoal.Title = request.Dto.Title;
         }

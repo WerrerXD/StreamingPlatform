@@ -1,9 +1,9 @@
 using MediatR;
+using Stream.Service.BusinessLogic.Contracts;
 
 namespace Stream.Service.BusinessLogic.Commands;
 
 public record ChangeStreamCategoryCommand(
     string Id,
-    string? Name,
-    string? Description
+    ChangeStreamCategoryDto Dto
     ) : IRequest;

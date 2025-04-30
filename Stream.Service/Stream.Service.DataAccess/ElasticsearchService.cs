@@ -1,4 +1,5 @@
 using Elastic.Clients.Elasticsearch;
+using Stream.Service.BusinessLogic.Abstractions;
 using Stream.Service.Domain.Interfaces;
 
 namespace Stream.Service.DataAccess;
@@ -7,12 +8,9 @@ public class ElasticsearchService : IElasticsearchService
 {
     private readonly ElasticsearchClient _client;
 
-    public ElasticsearchService(string elasticsearchUrl)
+    public ElasticsearchService(ElasticsearchClient client)
     {
-        var settings = new ElasticsearchClientSettings(new Uri(elasticsearchUrl))
-            .DefaultIndex("stream-service");
-
-        _client = new ElasticsearchClient(settings);
+        _client = client;
     }
 
     public async Task LogAsync(string message, string level, Exception? exception = null)

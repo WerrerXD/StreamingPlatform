@@ -7,7 +7,7 @@ using Stream.Service.BusinessLogic.Queries;
 namespace Stream.Service.Presentation.Controllers;
 
 [ApiController]
-[Route("stream-service/streams")]
+[Route("stream-service")]
 public class StreamsController : ControllerBase
 {
     private readonly IMediator _mediator;
@@ -17,7 +17,7 @@ public class StreamsController : ControllerBase
         _mediator = mediator;
     }
 
-    [HttpPost]
+    [HttpPost("streams")]
     public async Task<IActionResult> CreateStream([FromBody] CreateStreamCommand command, CancellationToken cancellationToken)
     {
         await _mediator.Send(command, cancellationToken);
@@ -25,7 +25,7 @@ public class StreamsController : ControllerBase
         return Ok();
     }
 
-    [HttpGet("{streamId}")]
+    [HttpGet("streams/{streamId}")]
     public async Task<IActionResult> GetStreamById([FromRoute] string streamId, CancellationToken cancellationToken)
     {
         var stream = await _mediator.Send(new GetStreamByIdQuery(streamId), cancellationToken);
@@ -33,7 +33,7 @@ public class StreamsController : ControllerBase
         return Ok(stream);
     }
 
-    [HttpGet("{streamerId}/streams")]
+    [HttpGet("streamers/{streamerId}/streams")]
     public async Task<IActionResult> GetStreamsByStreamer([FromRoute] string streamerId, CancellationToken cancellationToken)
     {
         var streams = await _mediator.Send(new GetAllStreamerStreamsQuery(streamerId), cancellationToken);
@@ -41,7 +41,7 @@ public class StreamsController : ControllerBase
         return Ok(streams);
     }
 
-    [HttpPut("{streamId}/end")]
+    [HttpPut("streams/{streamId}/status")]
     public async Task<IActionResult> EndStream([FromRoute] string streamId, CancellationToken cancellationToken)
     {
         await _mediator.Send(new EndStreamCommand(streamId), cancellationToken);
@@ -49,7 +49,7 @@ public class StreamsController : ControllerBase
         return Ok();
     }
 
-    [HttpGet("active")]
+    [HttpGet("streams/active")]
     public async Task<IActionResult> GetActiveStreams(CancellationToken cancellationToken)
     {
         var streams = await _mediator.Send(new GetAllActiveStreamsQuery(), cancellationToken);
@@ -57,15 +57,17 @@ public class StreamsController : ControllerBase
         return Ok(streams);
     }
 
-    [HttpPut]
-    public async Task<IActionResult> ChangeStream([FromForm] ChangeStreamCommand command, CancellationToken cancellationToken)
+    [HttpPut("streams/{streamId}")]
+    public async Task<IActionResult> ChangeStream([FromRoute] string streamId, [FromForm] ChangeStreamDto commandDto, CancellationToken cancellationToken)
     {
+        var command = new ChangeStreamCommand(streamId, commandDto);
+        
         await _mediator.Send(command, cancellationToken);
         
         return Ok();
     }
     
-    [HttpGet("{streamId}/chat-messages")]
+    [HttpGet("streams/{streamId}/chat-messages")]
     public async Task<IActionResult> GetMessages([FromRoute] string streamId, CancellationToken cancellationToken)
     {
         var messages = await _mediator.Send(new GetChatMessagesQuery(streamId), cancellationToken);
@@ -73,17 +75,17 @@ public class StreamsController : ControllerBase
         return Ok(messages);
     }
 
-    [HttpPost("{streamId}/chat-messages")]
-    public async Task<IActionResult> SendMessage([FromRoute] string streamId, [FromBody] CreateChatMessageDto dto, CancellationToken cancellationToken)
+    [HttpPost("streams/{streamId}/chat-messages")]
+    public async Task<IActionResult> SendMessage([FromRoute] string streamId, [FromBody] CreateChatMessageDto commandDto, CancellationToken cancellationToken)
     {
-        var command = new CreateChatMessageCommand(streamId, dto);
+        var command = new CreateChatMessageCommand(streamId, commandDto);
         
         await _mediator.Send(command, cancellationToken);
         
         return Ok();
     }
 
-    [HttpPost("{streamId}/donations")]
+    [HttpPost("streams/{streamId}/donations")]
     public async Task<IActionResult> Donate([FromRoute] string streamId, [FromBody] DonateStreamerDto commandDto, CancellationToken cancellationToken)
     {
         var command = new DonateStreamerCommand(streamId, commandDto);
@@ -93,7 +95,7 @@ public class StreamsController : ControllerBase
         return Ok();
     }
     
-    [HttpGet("{streamId}/donation-goals/active")]
+    [HttpGet("streams/{streamId}/donation-goals/active")]
     public async Task<IActionResult> GetActiveDonationGoal([FromRoute] string streamId, CancellationToken cancellationToken)
     {
         var donationGoal = await _mediator.Send(new GetActiveStreamDonationGoalQuery(streamId), cancellationToken);

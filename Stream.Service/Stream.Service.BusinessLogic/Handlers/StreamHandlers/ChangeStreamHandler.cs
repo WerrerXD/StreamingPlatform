@@ -18,8 +18,7 @@ public class ChangeStreamHandler: IRequestHandler<ChangeStreamCommand>
         _categoryRepository = categoryRepository;
         _loggingService = loggingService;
     }
-
-
+    
     public async Task Handle(ChangeStreamCommand request, CancellationToken cancellationToken)
     {
         var stream = await _repository.GetByIdAsync(request.StreamId, cancellationToken)
@@ -30,22 +29,22 @@ public class ChangeStreamHandler: IRequestHandler<ChangeStreamCommand>
             throw new BadRequestException("You cannot change stream that already ended");
         }
         
-        if (!string.IsNullOrEmpty(request.StreamName))
+        if (!string.IsNullOrWhiteSpace(request.Dto.StreamName))
         {
-            stream.Title = request.StreamName;
+            stream.Title = request.Dto.StreamName;
         }
 
-        if (!string.IsNullOrEmpty(request.StreamDescription))
+        if (!string.IsNullOrWhiteSpace(request.Dto.StreamDescription))
         {
-            stream.Description = request.StreamDescription;
+            stream.Description = request.Dto.StreamDescription;
         }
         
-        if (!string.IsNullOrEmpty(request.CategoryId))
+        if (!string.IsNullOrWhiteSpace(request.Dto.CategoryId))
         {
-            var category = await _categoryRepository.GetStreamCategoryByIdAsync(request.CategoryId, cancellationToken) 
+            var category = await _categoryRepository.GetStreamCategoryByIdAsync(request.Dto.CategoryId, cancellationToken) 
                 ?? throw new NotFoundException("Category with this id does not exist");
             
-            stream.CategoryId = request.CategoryId;
+            stream.CategoryId = request.Dto.CategoryId;
         }
         
         await _repository.UpdateAsync(stream, cancellationToken);

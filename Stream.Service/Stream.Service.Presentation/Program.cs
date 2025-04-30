@@ -1,18 +1,18 @@
 
+using Elastic.Clients.Elasticsearch;
 using FluentValidation.AspNetCore;
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 using Stream.Service.BusinessLogic.Abstractions;
-using Stream.Service.BusinessLogic.Handlers;
 using Stream.Service.BusinessLogic.Handlers.StreamHandlers;
 using Stream.Service.BusinessLogic.Mappings;
-using Stream.Service.BusinessLogic.Queries;
 using Stream.Service.BusinessLogic.Services;
 using Stream.Service.BusinessLogic.Validators;
 using Stream.Service.DataAccess;
+using Stream.Service.DataAccess.Configuration;
 using Stream.Service.DataAccess.Repositories;
+using Stream.Service.DataAccess.Settings;
 using Stream.Service.Domain.Interfaces;
-using Stream.Service.Domain.Settings;
 using Stream.Service.Presentation.Hubs;
 using Stream.Service.Presentation.Middleware;
 using Stream.Service.Presentation.Services;
@@ -26,15 +26,22 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddSignalR();
 
+MongoConfig.Configure();
+
 builder.Services.AddControllers()
     .AddFluentValidation(fv => fv.RegisterValidatorsFromAssembly(typeof(CreateStreamCommandValidator).Assembly));
 
-builder.Services.AddSingleton<IElasticsearchService, ElasticsearchService>(sp =>
-    new ElasticsearchService("http://elasticsearch:9200"));
+var elasticsearchConfig = builder.Configuration.GetSection("Elasticsearch");
+
+builder.Services.AddSingleton<ElasticsearchClient>(_ =>
+    new ElasticsearchClient(new ElasticsearchClientSettings(new Uri(elasticsearchConfig["Url"]))
+        .DefaultIndex(elasticsearchConfig["DefaultIndex"])));
+
+builder.Services.AddScoped<IElasticsearchService, ElasticsearchService>();
 
 builder.Services.AddScoped<ILoggingService, LoggingService>();
 
-builder.Services.AddAutoMapper(typeof(MappingProfile));
+builder.Services.AddAutoMapper(typeof(StreamProfile).Assembly);
 
 builder.Services.Configure<DatabaseSettings>(builder.Configuration.GetSection("DatabaseSettings"));
 builder.Services.AddSingleton<IMongoClient>(sp =>
