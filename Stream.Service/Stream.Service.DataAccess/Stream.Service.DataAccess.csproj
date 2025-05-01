@@ -8,11 +8,6 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Stream.Service.BusinessLogic\Stream.Service.BusinessLogic.csproj" />
-<<<<<<< HEAD
-      <ProjectReference Include="..\Stream.Service.BusinessLogic\Stream.Service.BusinessLogic.csproj" />
-=======
-      <ProjectReference Include="..\..\User.Service\User.Service.Application\User.Service.Application.csproj" />
->>>>>>> 58c9870 (First changes)
       <ProjectReference Include="..\Stream.Service.Domain\Stream.Service.Domain.csproj" />
     </ItemGroup>
 
