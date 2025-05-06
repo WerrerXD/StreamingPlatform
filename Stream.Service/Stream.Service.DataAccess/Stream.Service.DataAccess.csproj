@@ -7,7 +7,15 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Stream.Service.Shared\Stream.Service.Shared.csproj" />
+      <ProjectReference Include="..\Stream.Service.BusinessLogic\Stream.Service.BusinessLogic.csproj" />
+      <ProjectReference Include="..\Stream.Service.Domain\Stream.Service.Domain.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Elastic.Clients.Elasticsearch" Version="8.15.10" />
+      <PackageReference Include="Microsoft.AspNetCore.SignalR.Core" Version="1.2.0" />
+      <PackageReference Include="Microsoft.Extensions.Options" Version="8.0.2" />
+      <PackageReference Include="MongoDB.Driver" Version="3.3.0" />
     </ItemGroup>
 
 </Project>

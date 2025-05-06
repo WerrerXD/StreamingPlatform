@@ -3,7 +3,7 @@
 services:
   # Микросервис User.Service
   user-service:
-    build: 
+    build:
       context: ./User.Service
       dockerfile: User.Service.Presentation/Dockerfile
     ports:
@@ -26,12 +26,12 @@ services:
       - "5002:80"
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - MongoDbSettings__ConnectionString=mongodb://mongo:27017
+      - MongoDbSettings__ConnectionString=mongodb://mongodb:27017
       - MongoDbSettings__DatabaseName=StreamDb
     depends_on:
-      - mongo
-      - rabbitmq
-      - redis
+      - mongodb
+      - logstash
+      - kibana
 
   # Микросервис Notification.Service
   notification-service:
@@ -73,17 +73,23 @@ services:
     depends_on:
       - db
 
-  mongo:
+  mongodb:
     image: mongo:6.0
+    container_name: mongodb
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
     ports:
       - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
 
   rabbitmq:
     image: rabbitmq:management
     ports:
-      - "5672:5672"  
-      - "15672:15672"  
-
+      - "5672:5672"
+      - "15672:15672"
+  
   redis:
     image: redis:7.0
     ports:
@@ -121,3 +127,4 @@ services:
 volumes:
   postgres_data:
   esdata:
+  mongo-data:

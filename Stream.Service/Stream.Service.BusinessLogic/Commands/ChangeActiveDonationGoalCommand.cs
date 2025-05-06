@@ -1,0 +1,9 @@
+using MediatR;
+using Stream.Service.BusinessLogic.Contracts;
+
+namespace Stream.Service.BusinessLogic.Commands;
+
+public record ChangeActiveDonationGoalCommand(
+    string StreamerId,
+    ChangeActiveDonationGoalDto Dto
+    ) : IRequest;

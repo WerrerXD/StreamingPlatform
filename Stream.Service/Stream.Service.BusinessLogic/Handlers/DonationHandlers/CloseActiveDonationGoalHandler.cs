@@ -1,0 +1,32 @@
+using MediatR;
+using Stream.Service.BusinessLogic.Abstractions;
+using Stream.Service.BusinessLogic.Commands;
+using Stream.Service.BusinessLogic.Exceptions;
+using Stream.Service.Domain.Interfaces;
+
+namespace Stream.Service.BusinessLogic.Handlers.DonationHandlers;
+
+public class CloseActiveDonationGoalHandler: IRequestHandler<CloseActiveDonationGoalCommand>
+{
+    private readonly IDonationGoalRepository _donationGoalRepository;
+    private readonly ILoggingService _loggingService;
+
+    public CloseActiveDonationGoalHandler(IDonationGoalRepository donationGoalRepository, ILoggingService loggingService)
+    {
+        _donationGoalRepository = donationGoalRepository;
+        _loggingService = loggingService;
+    }
+
+    public async Task Handle(CloseActiveDonationGoalCommand request, CancellationToken cancellationToken)
+    {
+        var donationGoal = await _donationGoalRepository.GetActiveDonationGoalByStreamerIdAsync(request.StreamerId, cancellationToken) 
+            ?? throw new NotFoundException("No active donation goal was found");
+        
+        donationGoal.IsActive = false;
+        donationGoal.ClosedAt = DateTime.UtcNow;
+        
+        await _donationGoalRepository.UpdateAsync(donationGoal, cancellationToken);
+        
+        await _loggingService.LogInformationAsync($"Donation-goal with id: {donationGoal.Id} was successfully closed");
+    }
+}
