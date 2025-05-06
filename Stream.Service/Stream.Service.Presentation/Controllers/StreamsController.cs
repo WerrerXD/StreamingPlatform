@@ -41,7 +41,7 @@ public class StreamsController : ControllerBase
         return Ok(streams);
     }
 
-    [HttpPut("streams/{streamId}/status")]
+    [HttpPatch("streams/{streamId}/status")]
     public async Task<IActionResult> EndStream([FromRoute] string streamId, CancellationToken cancellationToken)
     {
         await _mediator.Send(new EndStreamCommand(streamId), cancellationToken);
